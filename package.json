@@ -5,12 +5,15 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "backend": "nodemon app.js"
+    "backend": "nodemon app.js",
+    "frontend": "cd frontend && npm start",
+    "devices": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "keywords": [],
   "author": "João Lucas",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^8.2.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.1",
