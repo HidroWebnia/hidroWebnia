@@ -8,7 +8,7 @@
     "backend": "nodemon app.js",
     "frontend": "npm start --prefix frontend",
     "devices": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "render-postbuild": "npm install --prefix frontend && npm run buil --prefix frontend"
+    "render-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "João Lucas",
