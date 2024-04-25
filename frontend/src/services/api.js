@@ -15,8 +15,8 @@ export const deleteRegister = (id) => {
         .catch(err => console.log(err))
 }
 
-export const editRegister = (id, { name, image }) => {
-    return axios.patch(`https://devicesserver.onrender.com/api/devices/${id}`, { name, image }) 
+export const editRegister = (id, { name, description, image }) => {
+    return axios.patch(`https://devicesserver.onrender.com/api/devices/${id}`, { name, description, image }) 
         .then(response => {
             console.log('Editado', response)
             window.location.reload()
@@ -24,8 +24,8 @@ export const editRegister = (id, { name, image }) => {
         .catch(err => console.log(err))
 }
 
-export const addRegister = ({name, email, image}) => {
-    return axios.post(`https://devicesserver.onrender.com/api/devices`, { name, email, image }) 
+export const addRegister = ({name, description, email, image}) => {
+    return axios.post(`https://devicesserver.onrender.com/api/devices`, { name, description, email, image }) 
         .then(response => {
             console.log('Adicionado', response)
             window.location.reload()

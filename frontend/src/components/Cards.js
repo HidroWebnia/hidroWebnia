@@ -32,19 +32,31 @@ const Text = styled.p`
   margin-bottom: 5px;
 `;
 
-const Cards = ({ projeto }) => {
+const Cards = ({ device }) => {
   return (
     <Container>
       <CardContainer>
-        <Link to={`/medidas/${projeto._id}`}>
-          <Image src={projeto.image} alt="Imagem"/>
+        <Link to={`/medidas/${device._id}`}>
+          <Image src={device.image} alt="Imagem"/>
         </Link>
         <Content>
-          <Title>{projeto.name}</Title>
-          <Text>Kw/h: {projeto.kwh}</Text>
-          <Text>Corrente: {projeto.corrente}</Text>
-          <Text>Tensão: {projeto.tensao}</Text>
-          <Text>F.P: {projeto.fp}</Text>
+          <Title>{device.name}</Title>
+          {device.measures && device.measures.map((measure, index) => (
+            <div key={index}>
+              <Text>Kw/h: {measure.kwh}</Text>
+              <Text>Corrente: {measure.corrente}</Text>
+              <Text>Tensão: {measure.tensao}</Text>
+              <Text>F.P: {measure.fp}</Text>
+            </div>
+          ))}
+          {!device.measures && (
+            <div>
+              <Text>Kw/h:</Text>
+              <Text>Corrente:</Text>
+              <Text>Tensão:</Text>
+              <Text>F.P:</Text>
+            </div>
+          )}
         </Content>
       </CardContainer>
     </Container>

@@ -19,13 +19,13 @@ const CardContainer = styled.div`
 
 const Measurements = () => {
   const { data } = useApi('/devices')
-  console.log(data)
+
   return (
     <MeasurementsStyle>
       <h1>Medidas</h1>
       <CardContainer>
-        {data?.data?.map(projeto => (
-          <Cards key={projeto._id} projeto={projeto} />
+        {data?.data?.map(device => (
+          <Cards key={device._id} device={device} />
         ))}
       </CardContainer>
     </MeasurementsStyle>
@@ -33,3 +33,4 @@ const Measurements = () => {
 }
 
 export default Measurements
+
