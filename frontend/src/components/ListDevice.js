@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import {useApi} from '../hooks/useApi'
 import { Table } from 'react-bootstrap'
 import moment from 'moment'
+import Userfront from '@userfront/toolkit'
+import { jwtDecode } from 'jwt-decode'
 
 const Photo = styled.div`
     img{
@@ -12,7 +14,9 @@ const Photo = styled.div`
 `;
 
 const ListDevice = () => {
-    const {data} = useApi('/devices')
+    const userData = jwtDecode(Userfront.idToken())
+    const email = userData.email
+    const { data } = useApi(`/devices/${email}`)
   return (
     <Table striped bordered hover variant='dark'>
         <thead>

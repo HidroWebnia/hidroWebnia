@@ -6,6 +6,8 @@ import moment from 'moment'
 import ModalDelete from './ModalDelete'
 import FormEdit from './FormEdit'
 import { deleteRegister, editRegister } from '../services/api'
+import { jwtDecode } from 'jwt-decode'
+import Userfront from '@userfront/toolkit'
 
 const Photo = styled.div`
     img{
@@ -15,6 +17,10 @@ const Photo = styled.div`
 `;
 
 const AdminDetails = () => {
+
+    const userData = jwtDecode(Userfront.idToken())
+    const email1 = userData.email
+    const {data} = useApi(`/devices/${email1}`)
 
     const del = (id) => {
         deleteRegister(id)
@@ -48,7 +54,6 @@ const AdminDetails = () => {
     const [id, setId] = useState()
     const [email, setEmail] = useState() 
     const [show, setshow] = useState(false)
-    const {data} = useApi('/devices')
 
     const [escCurrent, setEscCurrent] = useState({
         header: '',

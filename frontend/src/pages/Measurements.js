@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Cards from '../components/Cards'
 import { useApi } from '../hooks/useApi'
+import { useNavigate } from 'react-router-dom'
+import Userfront from '@userfront/toolkit'
+import { jwtDecode } from 'jwt-decode'
 
 const MeasurementsStyle = styled.div`
   padding: 5rem;
@@ -18,7 +21,17 @@ const CardContainer = styled.div`
 `;
 
 const Measurements = () => {
-  const { data } = useApi('/devices')
+  const userData = jwtDecode(Userfront.idToken())
+  const email = userData.email
+  const { data } = useApi(`/devices/${email}`)
+  
+  let navigate = useNavigate()
+
+  useEffect(()=>{
+    if(!Userfront.accessToken()){
+      return navigate('/login')
+    }
+  })
 
   return (
     <MeasurementsStyle>

@@ -10,6 +10,17 @@ router.get('/', async (req, res) =>{
     }
 })
 
+router.get('/:email', async (req, res) =>{
+    try {
+        const Measurements = await Devices.find({
+            email: req.params.email
+        })
+        res.json(Measurements)
+    } catch(err) {
+        res.status(500).send(err)
+    }
+})
+
 router.get('/detalhes/:id', async (req, res) =>{
     try {
         const device = await Devices.findById(req.params.id)
