@@ -3,12 +3,14 @@ import { Button, Form, Container } from 'react-bootstrap'
 import { sendMail } from '../services/api'
 
 const FormContact = () => {
+    const [status, setStatus] = useState('Enviar')
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
 
     const manipulateSubmit = (e) => {
         e.preventDefault()
+        setStatus('Enviando...')
         const newSendEmail = {
             email: email,
             name: name,
@@ -51,9 +53,7 @@ const FormContact = () => {
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Enviar
-                </Button>
+                <Button variant="primary" type="submit">{status}</Button>
             </Form>
         </Container>
     )

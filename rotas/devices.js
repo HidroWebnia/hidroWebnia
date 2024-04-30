@@ -54,7 +54,7 @@ router.post('/send', (req, res) => {
     const message = req.body.message
     require('../nodemail')(name, email, message)
     .then(response=> res.json(response))
-    .catch(err=> res.json(err))
+    .catch(err=> res.status(500).send(err))
 })
 
 

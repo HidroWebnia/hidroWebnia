@@ -18,7 +18,7 @@ const Messages = () => {
   return (
     <MessagesStyle>
       <Title>
-        <h1>Mensagem</h1>
+        <h1>Mensagens</h1>
       </Title>
       <FormContact />
     </MessagesStyle>
