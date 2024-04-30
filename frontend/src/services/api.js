@@ -34,7 +34,7 @@ export const addRegister = ({name, description, email, image}) => {
 }
 
 export const sendMail = ({email, name, message}) => {
-    return axios.post(`https://devicesserver.onrender.com/api/devices`, { email, name, message }) 
+    return axios.post(`https://devicesserver.onrender.com/api/devices/send`, { email, name, message }) 
         .then(response => {
             console.log('Enviado', response)
             window.location.reload()
