@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { response } = require('express')
 const Devices = require('../model/Devices')
 
 router.get('/', async (req, res) =>{
@@ -45,6 +46,15 @@ router.patch('/:id', async(req, res) => {
     } catch(err) {
         res.status(500).send(err)
     }
+})
+
+router.post('/send', (req, res) => {
+    const email = req.body.email
+    const name = req.body.name
+    const message = req.body.message
+    require('../nodemail')(name, email, message)
+    .then(response=> res.json(response))
+    .catch(err=> res.json(err))
 })
 
 
