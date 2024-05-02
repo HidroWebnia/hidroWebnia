@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 const StyleAbout = styled.div`
     align-items: center;
@@ -26,7 +27,7 @@ const About = () => {
             essenciais de seus dispositivos elétricos. Nossa página oferece uma interface intuitiva e poderosa para visualizar informações detalhadas 
             sobre corrente, consumo de energia em kWh, tensão e uma variedade de outros parâmetros cruciais.
         </p>
-        <Button variant="dark" size="lg">
+        <Button variant="dark" size="lg" as={Link} to='/mensagens'>
           Fale Conosco!
         </Button>
     </StyleAbout>
