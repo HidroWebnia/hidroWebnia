@@ -44,18 +44,16 @@ const Cards = ({ device }) => {
           <Title>{device.name}</Title>
           {device.measures && device.measures.map((measure, index) => (
             <div key={index}>
-              <Text>Kw/h: {measure.kwh}</Text>
-              <Text>Corrente: {measure.corrente}</Text>
-              <Text>Tensão: {measure.tensao}</Text>
-              <Text>F.P: {measure.fp}</Text>
+              <Text>Temperatura: {measure.temperature}</Text>
+              <Text>Umidade: {measure.humidity}</Text>
+              <Text>Índice de Calor: {measure.heatIndex}</Text>
             </div>
           ))}
           {!device.measures && (
             <div>
-              <Text>Kw/h:</Text>
-              <Text>Corrente:</Text>
-              <Text>Tensão:</Text>
-              <Text>F.P:</Text>
+              <Text>Temperatura: </Text>
+              <Text>Umidade: </Text>
+              <Text>Índice de Calor: </Text>
             </div>
           )}
         </Content>

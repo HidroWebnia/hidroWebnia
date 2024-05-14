@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://devicesserver.onrender.com/api/'
+    baseURL: 'http://localhost:3080/api/'
 });
 
 export default api;
 
 export const deleteRegister = (id) => {
-    return axios.delete(`https://devicesserver.onrender.com/api/devices/${id}`)
+    return axios.delete(`http://localhost:3080/api/devices/${id}`)
         .then(response => {
             console.log(response)
             window.location.reload()
@@ -16,7 +16,7 @@ export const deleteRegister = (id) => {
 }
 
 export const editRegister = (id, { name, description, image }) => {
-    return axios.patch(`https://devicesserver.onrender.com/api/devices/${id}`, { name, description, image }) 
+    return axios.patch(`http://localhost:3080/api/devices/${id}`, { name, description, image }) 
         .then(response => {
             console.log('Editado', response)
             window.location.reload()
@@ -25,7 +25,7 @@ export const editRegister = (id, { name, description, image }) => {
 }
 
 export const addRegister = ({name, description, email, image}) => {
-    return axios.post(`https://devicesserver.onrender.com/api/devices`, { name, description, email, image }) 
+    return axios.post(`http://localhost:3080/api/devices`, { name, description, email, image }) 
         .then(response => {
             console.log('Adicionado', response)
             window.location.reload()
@@ -34,7 +34,7 @@ export const addRegister = ({name, description, email, image}) => {
 }
 
 export const sendMail = ({email, name, message}) => {
-    return axios.post(`https://devicesserver.onrender.com/api/devices/send`, { email, name, message }) 
+    return axios.post(`http://localhost:3080/api/devices/send`, { email, name, message }) 
         .then(response => {
             console.log('Enviado', response)
             window.location.reload()

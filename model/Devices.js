@@ -9,10 +9,9 @@ const deviceSchema = new Schema({
     image: {type: String, required: true},
     slug: {type: String, required: true, unique: true, default: function(){ return slug(this.name)}},
     measures: [{
-        kwh: {type: Number},
-        corrente: {type: Number},
-        tensao: {type: Number},
-        fp: {type: Number},
+        temperature: {type: Number},
+        humidity: {type: Number},
+        heatIndex: {type: Number},
         date: {type: Number, default: Date.now()}
     }]
 

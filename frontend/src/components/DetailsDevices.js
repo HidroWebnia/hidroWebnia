@@ -27,20 +27,18 @@ const DetailsDevices = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>Kw/H</th>
-            <th>Corrente</th>
-            <th>Tensão</th>
-            <th>Fator de Potência</th>
+            <th>Temperatura</th>
+            <th>Umidade</th>
+            <th>Índice de Calor</th>
             <th>Data</th>
           </tr>
         </thead>
         <tbody>
           {data?.data?.measures.map((measure, index) => (
             <tr key={index}>
-              <td>{measure.kwh}</td>
-              <td>{measure.corrente}</td>
-              <td>{measure.tensao}</td>
-              <td>{measure.fp}</td>
+              <td>{measure.temperature}</td>
+              <td>{measure.humidity}</td>
+              <td>{measure.heatIndex}</td>
               <td>{moment(measure.date).format('DD-MM-YYYY')}</td>
             </tr>
           ))}
