@@ -11,7 +11,7 @@ const Menu = () => {
     <div>
         <Navbar bg="dark" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand as={Link} to='/'>PowerTrack</Navbar.Brand>
+                <Navbar.Brand as={Link} to='/'>HidroWebnia</Navbar.Brand>
                 <Nav className="ms-auto">
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
                     <Nav.Link as={Link} to='/mensagens'>Mensagens</Nav.Link>

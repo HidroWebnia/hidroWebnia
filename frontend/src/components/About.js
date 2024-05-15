@@ -21,11 +21,11 @@ const StyleAbout = styled.div`
 const About = () => {
   return (
     <StyleAbout>
-        <h1>PowerTrack</h1>
-        <h2>Central de Controle de Dispositivos Elétricos</h2>
-        <p>Bem-vindo à nossa plataforma de monitoramento de dispositivos! Aqui você encontrará uma solução completa para acompanhar e analisar dados 
-            essenciais de seus dispositivos elétricos. Nossa página oferece uma interface intuitiva e poderosa para visualizar informações detalhadas 
-            sobre corrente, consumo de energia em kWh, tensão e uma variedade de outros parâmetros cruciais.
+        <h1>HidroWebnia</h1>
+        <h2>Sistema de Monitoramento de Hidroponia</h2>
+        <p>Bem-vindo ao HidroWebnia, o seu destino online para tudo relacionado à hidroponia! Navegue em nosso vasto catálogo de equipamentos, suprimentos e 
+          conhecimento especializado para iniciar e aprimorar seu próprio jardim hidropônico. Desde sistemas de cultivo até nutrientes personalizados, 
+          estamos aqui para ajudá-lo a cultivar plantas saudáveis e vibrantes, independentemente do espaço que você tenha disponível. 
         </p>
         <Button variant="dark" size="lg" as={Link} to='/mensagens'>
           Fale Conosco!

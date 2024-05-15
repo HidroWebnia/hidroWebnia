@@ -29,13 +29,13 @@ const Admin = () => {
       <AdminStyle>
         <h1>Administração</h1>
         <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
-        <Tab eventKey="devices" title="Meus Devices">
+        <Tab eventKey="devices" title="Hidroponia">
           <ListDevice />
         </Tab>
         <Tab eventKey="detalhes" title="Detalhes">
           <AdminDetails /> 
         </Tab>
-        <Tab eventKey="newdevice" title="Novo Device">
+        <Tab eventKey="newdevice" title="Nova Hidroponia">
           <NewDevice />
         </Tab>
       </Tabs>

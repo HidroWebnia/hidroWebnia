@@ -36,9 +36,9 @@ const DetailsDevices = () => {
         <tbody>
           {data?.data?.measures.map((measure, index) => (
             <tr key={index}>
-              <td>{measure.temperature}</td>
-              <td>{measure.humidity}</td>
-              <td>{measure.heatIndex}</td>
+              <td>{measure.temperature}°C</td>
+              <td>{measure.humidity}%</td>
+              <td>{measure.heatIndex}°C</td>
               <td>{moment(measure.date).format('DD-MM-YYYY')}</td>
             </tr>
           ))}

@@ -28,12 +28,12 @@ const NewDevice = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="nome">
-            <Form.Label>Nome do Device</Form.Label>
+            <Form.Label>Nome da Hidroponia</Form.Label>
             <Form.Control 
                 type="text" 
                 value={name}
                 onChange={(e)=> setName(e.target.value)}
-                placeholder="Digite o Nome do Device" 
+                placeholder="Digite o Nome da Hidroponia" 
             />
         </Form.Group>
 

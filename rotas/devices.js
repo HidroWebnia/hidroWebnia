@@ -74,25 +74,6 @@ router.post('/', async (req, res) =>{
     }
 })
 
-router.post('/:id/measures', async (req, res) => {
-    try {
-        const deviceId = req.params.id
-        const newMeasure = req.body
-        
-        const device = await Devices.findById(deviceId);
-        if (!device) {
-            return res.status(404).json({ error: 'Dispositivo não encontrado' })
-        }
-
-        device.measures.push(newMeasure)
-        await device.save()
-
-        res.json(device);
-    } catch(err) {
-        res.status(500).send(err)
-    }
-})
-
 router.delete('/:id', async (req, res) => {
     try {
         const device = await Devices.findByIdAndDelete(req.params.id)
@@ -110,7 +91,5 @@ router.put('/:id', async (req, res) => {
         res.status(500).send(err)
     }
 })
-
-
 
 module.exports = router
