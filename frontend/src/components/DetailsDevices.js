@@ -30,7 +30,6 @@ const DetailsDevices = () => {
             <th>Temperatura</th>
             <th>Umidade</th>
             <th>Índice de Calor</th>
-            <th>Data</th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +38,6 @@ const DetailsDevices = () => {
               <td>{measure.temperature}°C</td>
               <td>{measure.humidity}%</td>
               <td>{measure.heatIndex}°C</td>
-              <td>{moment(measure.date).format('DD-MM-YYYY')}</td>
             </tr>
           ))}
         </tbody>
