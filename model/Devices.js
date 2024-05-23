@@ -10,9 +10,18 @@ const deviceSchema = new Schema({
     slug: {type: String, required: true, unique: true, default: function(){ return slug(this.name)}},
     measures: [{
         temperature: {type: Number},
+        waterTemperature: {type: Number},
+        waterFlux: {type: Number},
+        containerLevel: {type: Number},
+        conductivity: {type: Number},
         humidity: {type: Number},
-        heatIndex: {type: Number},
-        date: {type: Number, default: Date.now()}
+        luminosity: {type: Number},
+        ph: {type: Number},
+        uv: {type: Number},
+        hour: {type: Number},
+        day: {type: Number},
+        onlineTime: {type: Number},
+        engineStatus: {type: Boolean}
     }]
 
 })

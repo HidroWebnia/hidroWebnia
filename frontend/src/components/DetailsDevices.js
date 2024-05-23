@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useApi } from '../hooks/useApi'
 import { Table } from 'react-bootstrap'
-import moment from 'moment'
 
 const DetailsStyle = styled.div`
   text-align: center;
@@ -27,17 +26,37 @@ const DetailsDevices = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
+            <th>Dia</th>
+            <th>Hora</th>
             <th>Temperatura</th>
             <th>Umidade</th>
-            <th>Índice de Calor</th>
+            <th>Temperatura da Água</th>
+            <th>Fluxo da Água</th>
+            <th>Ph da Água</th>
+            <th>Condutividade</th>
+            <th>Luminosidade</th>
+            <th>Índice Ultravioleta</th>
+            <th>Nível do Recipiente</th>
+            <th>Tempo Online</th>
+            <th>Status do Motor</th>
           </tr>
         </thead>
         <tbody>
           {data?.data?.measures.map((measure, index) => (
             <tr key={index}>
+              <td>{measure.day}</td>
+              <td>{measure.hour}</td>
               <td>{measure.temperature}°C</td>
               <td>{measure.humidity}%</td>
-              <td>{measure.heatIndex}°C</td>
+              <td>{measure.waterTemperature}</td>
+              <td>{measure.waterFlux}</td>
+              <td>{measure.ph}</td>
+              <td>{measure.conductivity}</td>
+              <td>{measure.luminosity}</td>
+              <td>{measure.uv}</td>
+              <td>{measure.containerLevel}</td>
+              <td>{measure.onlineTime}</td>
+              <td>{measure.engineStatus}</td>
             </tr>
           ))}
         </tbody>
