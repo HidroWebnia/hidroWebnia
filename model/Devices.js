@@ -18,8 +18,8 @@ const deviceSchema = new Schema({
         luminosity: {type: Number},
         ph: {type: Number},
         uv: {type: Number},
-        hour: {type: Number},
-        day: {type: Number},
+        hour: {type: String},
+        day: {type: String},
         onlineTime: {type: Number},
         engineStatus: {type: Boolean}
     }]

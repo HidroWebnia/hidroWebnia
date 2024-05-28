@@ -86,7 +86,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const device = await Devices.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        res.json(device);
+        res.json(device)
     } catch(err) {
         res.status(500).send(err)
     }
