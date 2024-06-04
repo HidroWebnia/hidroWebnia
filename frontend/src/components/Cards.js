@@ -46,16 +46,8 @@ const Cards = ({ device }) => {
             <div key={index}>
               <Text>Temperatura: {measure.temperature}°C</Text>
               <Text>Umidade: <br /> {measure.humidity}%</Text>
-              <Text>Índice de Calor: {measure.heatIndex}°C</Text>
             </div>
           ))}
-          {!device.measures && (
-            <div>
-              <Text>Temperatura: </Text>
-              <Text>Umidade: </Text>
-              <Text>Índice de Calor: </Text>
-            </div>
-          )}
         </Content>
       </CardContainer>
     </Container>

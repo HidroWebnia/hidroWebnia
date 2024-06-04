@@ -16,10 +16,6 @@ const DetailsDevices = () => {
   const { id } = useParams()
   const { data } = useApi(`/devices/detalhes/${id}`)
 
-  if (!data) {
-    return <div>Loading...</div>
-  }
-
   return (
     <DetailsStyle>
       <h1>{data?.data?.name}</h1>
@@ -55,7 +51,7 @@ const DetailsDevices = () => {
               <td>{measure.luminosity}</td>
               <td>{measure.uv}</td>
               <td>{measure.containerLevel}</td>
-              <td>{measure.onlineTime}</td>
+              <td>{measure.onlineTime}Min</td>
               <td>{measure.engineStatus}</td>
             </tr>
           ))}
