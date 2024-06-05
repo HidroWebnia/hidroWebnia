@@ -8,7 +8,7 @@
 
 const char* ssid = ""; 
 const char* password = ""; 
-const char* url = "https://devicesserver.onrender.com/api/devices/6643e74f57a7f390aaca8bdd"; 
+const char* url = ""; 
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "pool.ntp.org", -10800, 60000);
