@@ -16,7 +16,7 @@ const ModalDelete = ({ show, setshow, escCurrent, id, email, children }) => {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton style={{ color: '#000000' }}> 
+        <Modal.Header closeButton style={{ color: '#000000'}}> 
           <Modal.Title>
             {escCurrent.header}<br />
             {id} <br />
