@@ -20,7 +20,7 @@ const DeviceData = () => {
 
   return (
     <DetailsStyle>
-      <div class="table-responsive">
+      <div class="table-responsive-md">
         <Table striped bordered hover variant="secondary" class="table ">
           <thead>
             <tr>

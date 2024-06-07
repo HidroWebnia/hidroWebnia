@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     body{
@@ -25,4 +25,4 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-export default GlobalStyles
+export default GlobalStyles;
