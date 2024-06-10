@@ -1,27 +1,28 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     body{
-        background-color: #26503c;
+        background-color: #EDEDED;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
         text-align: justify;
-        color: #ffffff;
     }
 
     h1{
-        font-size: 50px;
+        font-size: 36px;
         font-weight: bold;
+        color: #26503c;
     }
 
     h2{
-        font-size: 40px;
-        font-weight: bold;
+        font-size: 24px;
+        font-weight: medium;
+        color: #212529;
     }
 
     p{
-        font-size: 30px;
+        font-size: 18px;
+        color: #212529;
     }
 `;
 
-export default GlobalStyles
+export default GlobalStyles;

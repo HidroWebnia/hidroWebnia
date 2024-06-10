@@ -16,11 +16,12 @@
   "dependencies": {
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "googleapis": "^135.0.0",
+    "jwt-decode": "^4.0.0",
     "mongoose": "^8.3.1",
     "nodemailer": "^6.9.13",
-    "slug": "^9.0.0"
+    "slug": "^9.0.0",
+    "styled-components": "^6.1.11"
   }
 }
