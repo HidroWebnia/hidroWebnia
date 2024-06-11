@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useApi } from '../hooks/useApi';
 import moment from 'moment';
 import styled from 'styled-components';
-import Userfront from '@userfront/toolkit';
-import { jwtDecode } from 'jwt-decode';
 import temperature from '../assets/temperature.png';
 import humidity from '../assets/humidity.png';
 import luminosity from '../assets/luminosidade.png';
@@ -54,7 +53,7 @@ const Card = styled.div`
   }
 
   &.nighttime {
-    background: linear-gradient(to right, #7385B1, #00164E);
+    background: linear-gradient(to right, #7385b1, #00164e);
     .DataHora {
       color: white;
     }
@@ -87,9 +86,8 @@ const DetailsButton = styled.button`
 `;
 
 const DetailsDevices = () => {
-  const userData = jwtDecode(Userfront.idToken());
-  const email = userData.email;
-  const { data } = useApi(`/devices/${email}`);
+  const { id } = useParams();
+  const { data } = useApi(`/devices/detalhes/${id}`);
   const [showDeviceData, setShowDeviceData] = useState(false);
   const [showTable, setShowTable] = useState(false);
 
@@ -103,119 +101,121 @@ const DetailsDevices = () => {
     setShowTable(!showTable);
   };
 
+  const renderCard = (title, value, imageSrc, altText) => (
+    <Card>
+      <StyledImage src={imageSrc} alt={altText} />
+      <CardContent>
+        <h2>{title}:</h2>
+        <p>{value ?? '--'}</p>
+      </CardContent>
+    </Card>
+  );
 
   return (
     <Container>
-      {data?.data?.map((device) => (
-        <React.Fragment key={device._id}>
+      {data?.data ? (
+        <React.Fragment>
           <Header>
-            <h1>{device.name}</h1>
+            <h1>{data.data.name}</h1>
           </Header>
-          {device.measures?.map((measure, index) => (
-            <CardContainer key={index}>
-              <Card className={isDaytime() ? 'daytime' : 'nighttime'}>
-                <StyledImage src={dataHora} alt="data icon" />
-                <CardContent>
-                  <h2 className="DataHora">Data e Hora:</h2>
-                  <p className="DataHora">
-                    {moment().format('DD/MM/YY')} - {moment().format('HH:mm')}
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <StyledImage src={temperature} alt="temperature icon" />
-                <CardContent>
-                  <h2>Temperatura:</h2>
-                  <p>{measure.temperature ?? '--'}°C</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={humidity} alt="humidity icon" />
-                <CardContent>
-                  <h2>Umidade:</h2>
-                  <p>{measure.humidity ?? '--'}%</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={luminosity} alt="luminosity icon" />
-                <CardContent>
-                  <h2>Luminosidade:</h2>
-                  <p>{measure.luminosity ?? '--'}</p>
-                </CardContent>
-              </Card>
-            </CardContainer>
-          ))}
-          {device.measures?.map((measure, index) => (
-            <CardContainer key={index}>
-              <Card>
-                <StyledImage src={temperatureWater} alt="temperature icon" />
-                <CardContent>
-                  <h2>Temperatura da água:</h2>
-                  <p>{measure.waterTemperature ?? '--'}°C</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={flux} alt="temperature icon" />
-                <CardContent>
-                  <h2>Fluxo da água:</h2>
-                  <p>{measure.waterFlux ?? '--'}</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={ph} alt="temperature icon" />
-                <CardContent>
-                  <h2>PH da água:</h2>
-                  <p>{measure.ph ?? '--'}</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={levelWater} alt="uv icon" />
-                <CardContent>
-                  <h2>Nível do recipiente:</h2>
-                  <p>{measure.containerLevel ?? '--'}</p>
-                </CardContent>
-              </Card>
-            </CardContainer>
-          ))}
-          {device.measures?.map((measure, index) => (
+          {data.data.measures?.length > 0 ? (
+            <React.Fragment>
+              {data.data.measures.map((measure, index) => (
+                <React.Fragment key={index}>
+                  <CardContainer>
+                    <Card className={isDaytime() ? 'daytime' : 'nighttime'}>
+                      <StyledImage src={dataHora} alt="data icon" />
+                      <CardContent>
+                        <h2 className="DataHora">Data e Hora:</h2>
+                        <p className="DataHora">
+                          {moment().format('DD/MM/YY')} - {moment().format('HH:mm')}
+                        </p>
+                      </CardContent>
+                    </Card>
+                    {renderCard(
+                      'Temperatura',
+                      measure.temperature,
+                      temperature,
+                      'temperature icon'
+                    )}
+                    {renderCard(
+                      'Umidade',
+                      measure.humidity,
+                      humidity,
+                      'humidity icon'
+                    )}
+                    {renderCard(
+                      'Luminosidade',
+                      measure.luminosity,
+                      luminosity,
+                      'luminosity icon'
+                    )}
+                  </CardContainer>
+                  <CardContainer>
+                    {renderCard(
+                      'Temperatura da água',
+                      measure.waterTemperature,
+                      temperatureWater,
+                      'temperature water icon'
+                    )}
+                    {renderCard(
+                      'Fluxo da água',
+                      measure.waterFlux,
+                      flux,
+                      'water flux icon'
+                    )}
+                    {renderCard('PH da água', measure.ph, ph, 'ph icon')}
+                    {renderCard(
+                      'Nível do recipiente',
+                      measure.containerLevel,
+                      levelWater,
+                      'level water icon'
+                    )}
+                  </CardContainer>
+                  <CardContainer>
+                    {renderCard(
+                      'Tempo online',
+                      measure.onlineTime,
+                      time,
+                      'time icon'
+                    )}
+                    {renderCard(
+                      'Status do motor',
+                      measure.engineStatus,
+                      motor,
+                      'motor icon'
+                    )}
+                    {renderCard(
+                      'Condutividade',
+                      measure.conductivity,
+                      condutivity,
+                      'conductivity icon'
+                    )}
+                    {renderCard('Índice UV', measure.uv, uv, 'uv icon')}
+                  </CardContainer>
+                </React.Fragment>
+              ))}
+              <DetailsButton onClick={handleButtonClick}>
+                {showDeviceData ? 'Ocultar' : 'Detalhar'}
+              </DetailsButton>
+              {showDeviceData && <DeviceData />}
+            </React.Fragment>
+          ) : (
             <CardContainer>
               <Card>
-                <StyledImage src={time} alt="temperature icon" />
                 <CardContent>
-                  <h2>Tempo online:</h2>
-                  <p>{measure.onlineTime ?? '--'} min</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={motor} alt="temperature icon" />
-                <CardContent>
-                  <h2>Status do motor:</h2>
-                  <p>{measure.engineStatus ?? '--'}</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={condutivity} alt="temperature icon" />
-                <CardContent>
-                  <h2>Condutividade:</h2>
-                  <p>{measure.conductivity ?? '--'}</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <StyledImage src={uv} alt="uv icon" />
-                <CardContent>
-                  <h2>Índice UV:</h2>
-                  <p>{measure.uv ?? '--'}</p>
+                  <h2>Sem dados disponíveis</h2>
+                  <p>Nenhuma medida foi registrada para este dispositivo ainda.</p>
                 </CardContent>
               </Card>
             </CardContainer>
-          ))}
-          <DetailsButton onClick={handleButtonClick}>
-            {showDeviceData ? 'Ocultar' : 'Detalhar'}
-          </DetailsButton>
-          {showDeviceData && <DeviceData />}
+          )}
         </React.Fragment>
-      ))}
+      ) : (
+        <Header>
+          <h1>Carregando...</h1>
+        </Header>
+      )}
     </Container>
   );
 };

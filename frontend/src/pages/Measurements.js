@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import Cards from '../components/Cards'
-import { useApi } from '../hooks/useApi'
-import { useNavigate } from 'react-router-dom'
-import Userfront from '@userfront/toolkit'
-import { jwtDecode } from 'jwt-decode'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Cards from '../components/Cards';
+import { useApi } from '../hooks/useApi';
+import { useNavigate, Link } from 'react-router-dom';
+import Userfront from '@userfront/toolkit';
+import { jwtDecode } from 'jwt-decode';
 
 const MeasurementsStyle = styled.div`
   padding: 5rem;
@@ -21,29 +21,30 @@ const CardContainer = styled.div`
 `;
 
 const Measurements = () => {
-  const userData = jwtDecode(Userfront.idToken())
-  const email = userData.email
-  const { data } = useApi(`/devices/${email}`)
-  
-  let navigate = useNavigate()
+  const userData = jwtDecode(Userfront.idToken());
+  const email = userData.email;
+  const { data } = useApi(`/devices/${email}`);
 
-  useEffect(()=>{
-    if(!Userfront.accessToken()){
-      return navigate('/login')
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (!Userfront.accessToken()) {
+      return navigate('/login');
     }
-  })
+  }, [navigate]);
 
   return (
     <MeasurementsStyle>
       <h1>Medidas</h1>
       <CardContainer>
-        {data?.data?.map(device => (
-          <Cards key={device._id} device={device} />
+        {data?.data?.map((device) => (
+          <Link key={device._id} to={`/details/${device._id}`}>
+            <Cards device={device} />
+          </Link>
         ))}
       </CardContainer>
     </MeasurementsStyle>
-  )
-}
+  );
+};
 
-export default Measurements
-
+export default Measurements;
