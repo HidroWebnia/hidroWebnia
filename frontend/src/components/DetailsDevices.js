@@ -10,8 +10,8 @@ import levelWater from '../assets/levelWater.png';
 import motor from '../assets/motor.png';
 import ph from '../assets/ph.png';
 import temperatureWater from '../assets/temperatureWater.png';
-import time from '../assets/condutividade.png';
-import condutivity from '../assets/time.png';
+import condutivity from '../assets/condutividade.png';
+import time from '../assets/time.png';
 import flux from '../assets/waterFlux.png';
 import uv from '../assets/indiceUV.png';
 import dataHora from '../assets/Data.png';
@@ -128,7 +128,8 @@ const DetailsDevices = () => {
                       <CardContent>
                         <h2 className="DataHora">Data e Hora:</h2>
                         <p className="DataHora">
-                          {moment().format('DD/MM/YY')} - {moment().format('HH:mm')}
+                          {moment().format('DD/MM/YY')} -{' '}
+                          {moment().format('HH:mm')}
                         </p>
                       </CardContent>
                     </Card>
@@ -205,7 +206,9 @@ const DetailsDevices = () => {
               <Card>
                 <CardContent>
                   <h2>Sem dados disponíveis</h2>
-                  <p>Nenhuma medida foi registrada para este dispositivo ainda.</p>
+                  <p>
+                    Nenhuma medida foi registrada para este dispositivo ainda.
+                  </p>
                 </CardContent>
               </Card>
             </CardContainer>
