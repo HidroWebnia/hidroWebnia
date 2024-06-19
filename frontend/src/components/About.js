@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import imgAbout from '../assets/img-about.svg';
+import foto from '../assets/foto1.svg';
+import foto2 from '../assets/foto3.jpg';
+
 
 const StyleAbout = styled.div`
   align-items: center;
   .banner {
-    background-image: url(${imgBG});
+    background-image: url(${foto});
     background-size: cover;
     background-position: center;
     padding: 96px;
@@ -104,9 +107,9 @@ const StyleAbout = styled.div`
     }
   }
   img {
-    width: 50%;
+    width: 500px;
     height: auto;
-    margin-left: 20px;
+    margin-left: 14px;
 
     @media (max-width: 1024px) {
       width: 60%;
@@ -162,7 +165,7 @@ const About = () => {
             agricultura com HidroWebnia.
           </p>
         </div>
-        <img src={imgAbout} alt="" />
+        <img src={foto2} alt="" />
       </div>
     </StyleAbout>
   );
