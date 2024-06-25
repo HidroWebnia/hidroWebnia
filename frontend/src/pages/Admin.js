@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Tab, Tabs, Container } from 'react-bootstrap';
 import ListDevice from '../components/ListDevice';
 import AdminDetails from '../components/AdminDetails';
 import NewDevice from '../components/NewDevice';
+import { useNavigate } from 'react-router-dom';
+import Userfront from '@userfront/toolkit';
 
 const AdminStyle = styled.div`
   h1 {
@@ -33,6 +35,12 @@ const StyledTabs = styled(Tabs)`
 `;
 
 const Admin = () => {
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (!Userfront.accessToken()) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
     <Container>

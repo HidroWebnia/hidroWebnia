@@ -1,38 +1,36 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import Home from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GlobalStyles from './components/GlobalStyles';
 import Menu from './components/Menu';
 import Measurements from './pages/Measurements';
 import Admin from './pages/Admin';
+import Messages from './pages/Messages';
 import DetailsDevices from './components/DetailsDevices';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import ResetPassword from './pages/ResetPassword';
-import NewPassword from './pages/NewPassword';
-import PublicRoute from './routes/PublicRoute';
-import PrivateRoute from './routes/PrivateRoute';
-import AuthProvider from './components/AuthContext'; 
+import { Login, Signup } from './components/authentication/Authentication';
+import DeviceData from './components/DeviceData';
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <GlobalStyles />
-        <Menu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<PublicRoute element={<Login />} />} />
-          <Route path="/cadastro" element={<PublicRoute element={<Register />} />} />
-          <Route path="/reset-password" element={<PublicRoute element={<ResetPassword />} />} />
-          <Route path="/reset-password/:token" element={<PublicRoute element={<NewPassword />} />} />
-          <Route path="/medidas" element={<PrivateRoute element={<Measurements />} />} />
-          <Route path="/medidas/:id" element={<PrivateRoute element={<DetailsDevices />} />} />
-          <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <GlobalStyles />
+      <Menu />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/medidas" element={<Measurements />} />
+        <Route path="/medidas/:id" element={<DetailsDevices />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/mensagens" element={<Messages />} />
+        <Route path="/cadastro" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import imgAbout from '../assets/img-about.svg';
 import foto from '../assets/foto1.svg';
@@ -123,9 +123,6 @@ const StyleAbout = styled.div`
 `;
 
 const About = () => {
-
-  const navigate = useNavigate()
-
   return (
     <StyleAbout>
       <div className="banner">
@@ -141,8 +138,8 @@ const About = () => {
           saudáveis e vibrantes, independentemente do espaço que você tenha
           disponível.
         </p>
-        <button className="bt-login" onClick={()=> navigate('/login')}>Entrar</button>
-        <button className="bt-register" onClick={()=> navigate('/cadastro')}>Cadastrar</button>
+        <button className="bt-login">Entrar</button>
+        <button className="bt-register">Cadastrar</button>
       </div>
       <div className="sobre">
         <div>

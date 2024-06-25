@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import React from 'react';
+import Userfront from '@userfront/toolkit';
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { AuthContext } from './AuthContext'; 
+import { Logout } from './authentication/Authentication';
 
 const Menu = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext);
-
-  
+  const isAuthenticated = Userfront.accessToken();
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
@@ -20,6 +19,9 @@ const Menu = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
+            <Nav.Link as={Link} to="/mensagens">
+              Mensagens
+            </Nav.Link>
             {isAuthenticated && (
               <>
                 <Nav.Link as={Link} to="/medidas">
@@ -28,21 +30,22 @@ const Menu = () => {
                 <Nav.Link as={Link} to="/admin">
                   Administração
                 </Nav.Link>
+                <Nav.Item>
+                  <span className="d-inline-block">
+                    <Logout />
+                  </span>
+                </Nav.Item>
               </>
             )}
-            {!isAuthenticated ? (
+            {!isAuthenticated && (
               <>
-                <Nav.Link as={Link} to="/login">
-                  Login
-                </Nav.Link>
                 <Nav.Link as={Link} to="/cadastro">
                   Cadastro
                 </Nav.Link>
+                <Nav.Link as={Link} to="/login">
+                  Login
+                </Nav.Link>
               </>
-            ) : (
-              <Nav.Link onClick={logout}>
-                Logout
-              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

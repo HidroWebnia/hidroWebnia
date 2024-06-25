@@ -43,7 +43,7 @@ const NewDevice = () => {
                 type="text" 
                 value={description}
                 onChange={(e)=> setDescription(e.target.value)}
-                placeholder="Digite uma Descrição Para a sua Hidroponia" 
+                placeholder="Digite uma Descrição Para o seu Device" 
             />
         </Form.Group>
 
