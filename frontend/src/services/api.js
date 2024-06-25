@@ -69,22 +69,22 @@ export const register = ({username, email, password, confirmPassword}) => {
     })
 }
 
-export const resetPassword = ({ email }) => {
-    return axios.post('https://devicesserver.onrender.com/api/auth/reset-password', {email})
-    .then(response => {
-        if (response.status === 200){
-            return response
+export const resetPassword = (email) => {
+    return axios.post('https://devicesserver.onrender.com/api/auth/reset-password', { email })
+      .then(response => {
+        if (response.status === 200) {
+          return response
         }
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         console.error(err)
         if (err.response && err.response.data) {
-            throw new Error(err.response.data.msg || 'Erro ao enviar email de redefinição de senha.')
+          throw new Error(err.response.data.msg || 'Erro ao enviar email de redefinição de senha.')
         } else {
-            throw new Error('Erro no servidor, tente novamente mais tarde!')
+          throw new Error('Erro no servidor, tente novamente mais tarde!')
         }
-    })
-}
+      })
+  }
 
 export const newPassword = (token, { password, confirmPassword }) => {
     return axios.post(`https://devicesserver.onrender.com/api/auth/reset-password/${token}`, {password, confirmPassword})

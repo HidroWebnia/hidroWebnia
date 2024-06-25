@@ -174,7 +174,7 @@ router.post('/reset-password', async (req, res) => {
         subject: 'Link para redefinir sua senha',
         text: `Você está recebendo este email porque solicitou a redefinição de senha para sua conta.\n\n
         Por favor, clique no link a seguir, ou cole-o em seu navegador para concluir o processo dentro de uma hora após o recebimento:\n\n
-        http://localhost:3000/reset-password/${token}\n\n
+        https://devicessite.onrender.com/reset-password/${token}\n\n
         Se você não solicitou isso, por favor, ignore este email e sua senha permanecerá inalterada.\n`,
     }
 

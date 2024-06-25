@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { resetPassword } from '../services/api';
+import { resetPassword } from '../services/api'
 
 const Container = styled.div`
   display: flex;
@@ -58,7 +58,7 @@ const Spinner = styled.div`
 
   @keyframes spin {
     to {
-      transform: rotate(360deg);
+      transform: rotate(360deg)
     }
   }
 `;
@@ -91,7 +91,6 @@ const ResetPassword = () => {
   return (
     <Container>
       <ResetBox>
-
         <Title>Redefinir Senha</Title>
         <form onSubmit={handleSubmit}>
           <Input
@@ -107,7 +106,6 @@ const ResetPassword = () => {
             {loading ? <Spinner /> : 'Enviar'}
           </Button>
         </form>
-
       </ResetBox>
     </Container>
   )
