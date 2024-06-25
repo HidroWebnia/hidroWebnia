@@ -1,17 +1,13 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import imgAbout from '../assets/img-about.svg';
-import foto from '../assets/foto1.svg';
-import foto2 from '../assets/foto3.jpg';
-
 
 const StyleAbout = styled.div`
   align-items: center;
   .banner {
-    background-image: url(${foto});
+    background-image: url(${imgBG});
     background-size: cover;
     background-position: center;
     padding: 96px;
@@ -107,9 +103,9 @@ const StyleAbout = styled.div`
     }
   }
   img {
-    width: 500px;
+    width: 50%;
     height: auto;
-    margin-left: 14px;
+    margin-left: 20px;
 
     @media (max-width: 1024px) {
       width: 60%;
@@ -123,6 +119,9 @@ const StyleAbout = styled.div`
 `;
 
 const About = () => {
+
+  const navigate = useNavigate()
+
   return (
     <StyleAbout>
       <div className="banner">
@@ -138,8 +137,8 @@ const About = () => {
           saudáveis e vibrantes, independentemente do espaço que você tenha
           disponível.
         </p>
-        <button className="bt-login">Entrar</button>
-        <button className="bt-register">Cadastrar</button>
+        <button className="bt-login" onClick={()=> navigate('/login')}>Entrar</button>
+        <button className="bt-register" onClick={()=> navigate('/cadastro')}>Cadastrar</button>
       </div>
       <div className="sobre">
         <div>
@@ -165,7 +164,7 @@ const About = () => {
             agricultura com HidroWebnia.
           </p>
         </div>
-        <img src={foto2} alt="" />
+        <img src={imgAbout} alt="" />
       </div>
     </StyleAbout>
   );

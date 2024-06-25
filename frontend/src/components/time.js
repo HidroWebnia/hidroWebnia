@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ex from '../assets/exemplo.svg';
 import { FaLinkedin } from 'react-icons/fa6';
 import { RiInstagramFill } from 'react-icons/ri';
 import ivan from '../assets/ivan.svg';
