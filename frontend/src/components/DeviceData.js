@@ -10,7 +10,7 @@ const DetailsStyle = styled.div`
     padding-bottom: 50px;
   }
   tbody {
-    margim: 32px;
+    margin: 32px;
   }
 `;
 

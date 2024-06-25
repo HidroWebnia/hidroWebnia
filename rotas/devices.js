@@ -1,22 +1,10 @@
 const router = require('express').Router()
-const { response } = require('express')
 const Devices = require('../model/Devices')
 
 router.get('/', async (req, res) =>{
     try {
         const devices = await Devices.find()
         res.json(devices)
-    } catch(err) {
-        res.status(500).send(err)
-    }
-})
-
-router.get('/:email', async (req, res) =>{
-    try {
-        const Measurements = await Devices.find({
-            email: req.params.email
-        })
-        res.json(Measurements)
     } catch(err) {
         res.status(500).send(err)
     }
@@ -47,16 +35,6 @@ router.patch('/:id', async(req, res) => {
         res.status(500).send(err)
     }
 })
-
-router.post('/send', (req, res) => {
-    const email = req.body.email
-    const name = req.body.name
-    const message = req.body.message
-    require('../nodemail')(name, email, message)
-    .then(response=> res.json(response))
-    .catch(err=> res.status(500).send(err))
-})
-
 
 router.post('/', async (req, res) =>{
     try {
