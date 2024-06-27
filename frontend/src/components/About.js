@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import imgAbout from '../assets/img-about.svg';
 
@@ -55,6 +55,7 @@ const StyleAbout = styled.div`
     border: none;
     border-radius: 4px;
     margin: 0 12px 12px 0;
+    transition: background-color 0.3s ease;
 
     @media (max-width: 480px) {
       padding: 6px 24px;
@@ -63,13 +64,26 @@ const StyleAbout = styled.div`
   }
 
   .bt-login {
-    background-color: #97c9a0;
+    background-color: #2e8b57;
+    color: #fff;
+  }
+
+  .bt-login:hover {
+    background-color: white;
+    color: #000;
   }
 
   .bt-register {
-    background-color: #3d684d;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #97c9a0;
+  }
+
+  .bt-register:hover {
+    background-color: #2e8b57;
     color: #fff;
   }
+
   .sobre {
     padding: 96px 96px 0 96px;
     display: flex;
@@ -119,9 +133,6 @@ const StyleAbout = styled.div`
 `;
 
 const About = () => {
-
-  const navigate = useNavigate()
-
   return (
     <StyleAbout>
       <div className="banner">
@@ -137,8 +148,12 @@ const About = () => {
           saudáveis e vibrantes, independentemente do espaço que você tenha
           disponível.
         </p>
-        <button className="bt-login" onClick={()=> navigate('/login')}>Entrar</button>
-        <button className="bt-register" onClick={()=> navigate('/cadastro')}>Cadastrar</button>
+        <Link to="/login">
+          <button className="bt-login">Entrar</button>
+        </Link>
+        <Link to="/register">
+          <button className="bt-register">Cadastrar</button>
+        </Link>
       </div>
       <div className="sobre">
         <div>
@@ -164,7 +179,7 @@ const About = () => {
             agricultura com HidroWebnia.
           </p>
         </div>
-        <img src={imgAbout} alt="" />
+        <img src={imgAbout} alt="Sobre nós" />
       </div>
     </StyleAbout>
   );

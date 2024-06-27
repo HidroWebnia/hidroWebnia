@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyleFooter = styled.div`
-  background-color: #ccddcf;
+  background-color: #2e8b57;
   padding: 36px 96px;
 
   @media (max-width: 768px) {
@@ -16,6 +16,7 @@ const StyleFooter = styled.div`
   .footer {
     text-align: center;
     font-size: 16px;
+    color: #fff;
 
     @media (max-width: 768px) {
       font-size: 14px;
@@ -27,14 +28,66 @@ const StyleFooter = styled.div`
   }
 `;
 
-const Contact = () => {
+const Footer = styled.footer`
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  padding: 64px 80px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  img,
+  .titulo {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  strong {
+    color: #fff;
+  }
+
+  nav a {
+    color: #fff;
+    display: block;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+
+  p {
+    margin-bottom: 16px;
+    max-width: 350px;
+    color: #fff;
+  }
+`;
+
+const CombinedFooter = () => {
   return (
-    <StyleFooter>
-      <div className="footer">
-        © 2024 HidroWebnia. Todos os direitos reservados.
-      </div>
-    </StyleFooter>
+    <>
+      <Footer>
+        <div>
+          <h1><span>HidroWebnia</span></h1>
+          <p>Cultivando com inovação e tecnologia, colhendo com paixão e sustentabilidade: HydroLife, onde o verde floresce e o futuro se torna mais saudável!</p>
+        </div>
+        <div>
+          <strong className="titulo">Encontre-nos</strong>
+          <p>WhatsApp: <a href="https://wa.me/+5588988155616" target="_blank" rel="noopener noreferrer">(88) 98815-5616</a></p>
+          <p>Email: <a href="wesneipaiva@gmail.com" target="_blank" rel="noopener noreferrer">wesneipaiva@gmail.com</a></p>
+          <p>Endereço: Rod. Pres. Juscelino Kubitschek - Boa Viagem - CE</p>
+        </div>
+      </Footer>
+      <StyleFooter>
+        <div className="footer">
+          © 2024 HidroWebnia. Todos os direitos reservados.
+        </div>
+      </StyleFooter>
+    </>
   );
 };
 
-export default Contact;
+export default CombinedFooter;
