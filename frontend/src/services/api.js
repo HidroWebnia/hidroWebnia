@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://devicesserver.onrender.com/api/'
+    baseURL: 'http://localhost:3080/api/'
 })
 
 export default api
 
 export const deleteRegister = (id) => {
-    return axios.delete(`https://devicesserver.onrender.com/api/devices/${id}`)
+    return axios.delete(`http://localhost:3080/api/devices/${id}`)
         .then(response => {
             console.log(response)
             window.location.reload()
@@ -16,7 +16,7 @@ export const deleteRegister = (id) => {
 }
 
 export const editRegister = (id, { name, description, image }) => {
-    return axios.patch(`https://devicesserver.onrender.com/api/devices/${id}`, { name, description, image }) 
+    return axios.patch(`http://localhost:3080/api/devices/${id}`, { name, description, image }) 
         .then(response => {
             console.log('Editado', response)
             window.location.reload()
@@ -24,8 +24,8 @@ export const editRegister = (id, { name, description, image }) => {
         .catch(err => console.log(err))
 }
 
-export const addRegister = ({name, description, email, image}) => {
-    return axios.post(`https://devicesserver.onrender.com/api/devices`, { name, description, email, image }) 
+export const addRegister = ({name, description, email, image, registrationDate}) => {
+    return axios.post(`http://localhost:3080/api/devices`, { name, description, email, image, registrationDate}) 
         .then(response => {
             console.log('Adicionado', response)
             window.location.reload()
@@ -34,7 +34,7 @@ export const addRegister = ({name, description, email, image}) => {
 }
 
 export const login = ({ email, password }) => {
-    return axios.post('https://devicesserver.onrender.com/api/auth/login', { email, password })
+    return axios.post('http://localhost:3080/api/auth/login', { email, password })
         .then(response => {
             if (response.status === 200) {
                 const { token } = response.data
@@ -53,7 +53,7 @@ export const login = ({ email, password }) => {
 }
 
 export const register = ({username, email, password, confirmPassword}) => {
-    return axios.post('https://devicesserver.onrender.com/api/auth/register', {username, email, password, confirmPassword})
+    return axios.post('http://localhost:3080/api/auth/register', {username, email, password, confirmPassword})
     .then(response => {
         if (response.status === 200){
             return response
@@ -70,7 +70,7 @@ export const register = ({username, email, password, confirmPassword}) => {
 }
 
 export const resetPassword = (email) => {
-    return axios.post('https://devicesserver.onrender.com/api/auth/reset-password', { email })
+    return axios.post('http://localhost:3080/api/auth/reset-password', { email })
       .then(response => {
         if (response.status === 200) {
           return response
@@ -87,7 +87,7 @@ export const resetPassword = (email) => {
   }
 
 export const newPassword = (token, { password, confirmPassword }) => {
-    return axios.post(`https://devicesserver.onrender.com/api/auth/reset-password/${token}`, {password, confirmPassword})
+    return axios.post(`http://localhost:3080/api/auth/reset-password/${token}`, {password, confirmPassword})
     .then(response => {
         if(response.status === 200){
             return response

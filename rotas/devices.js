@@ -43,7 +43,8 @@ router.post('/', async (req, res) =>{
             description: req.body.description,
             email: req.body.email,
             image: req.body.image,
-            measures: req.body.measures
+            measures: req.body.measures,
+            registrationDate: req.body.registrationDate
         })
         await device.save()
         res.json(device)

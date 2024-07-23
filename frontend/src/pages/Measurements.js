@@ -27,7 +27,7 @@ const Measurements = () => {
       <h1>Medidas</h1>
       <CardContainer>
         {data?.data?.map((device) => (
-          <Link key={device._id} to={`/details/${device._id}`}>
+          <Link key={device._id} to={`/medidas/${device._id}`}>
             <Cards device={device} />
           </Link>
         ))}
