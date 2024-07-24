@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const Devices = require('../model/Devices')
 
+const ONE_MINUTE = 60000
+
 router.get('/', async (req, res) =>{
     try {
         const devices = await Devices.find()
@@ -53,6 +55,28 @@ router.post('/', async (req, res) =>{
     }
 })
 
+router.post('/espStatus/:id', async (req, res) => {
+    try {
+
+        const {espStatus, measures} = req.body
+        const device = await device.findById(req.params.id)
+
+        if(!device){
+            return res.status(404).json({ msg: 'Device não encontrado!' })
+        }
+
+        device.espStatus = espStatus
+        device.lastRequestTime = new Date()
+        device.measures = measures
+        await device.save()
+
+        res.json({ sucess: true, device })
+
+    } catch (err) {
+        res.status(500).send(err)
+    }
+})
+
 router.delete('/:id', async (req, res) => {
     try {
         const device = await Devices.findByIdAndDelete(req.params.id)
@@ -70,5 +94,19 @@ router.put('/:id', async (req, res) => {
         res.status(500).send(err)
     }
 })
+
+async function checkInactiveDevices() {
+    const devices = await Devices.find()
+    const now = new Date()
+
+    devices.forEach(async (device) => {
+        if ((now - new Date(device.lastRequestTime)) > ONE_MINUTE) {
+            device.espStatus = false
+            await device.save()
+        }
+    })
+}
+
+setInterval(checkInactiveDevices, ONE_MINUTE)
 
 module.exports = router
