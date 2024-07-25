@@ -83,7 +83,6 @@ void loop() {
   http.begin(url);
 
   String json = "{";
-  json += "\"espStatus\": true,";
   json += "\"measures\": [";
   json += "{";
   json += "\"temperature\": " + String(t) + ",";
@@ -93,7 +92,6 @@ void loop() {
   json += "\"day\": \"" + Date + "\"";
   json += "}";
   json += "]}";
-
 
   http.addHeader("Content-Type", "application/json");
 

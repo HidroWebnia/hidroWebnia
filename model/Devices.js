@@ -7,8 +7,6 @@ const deviceSchema = new Schema({
     description: {type: String, required: true},
     email: {type: String, required: true},
     image: {type: String, required: true},
-    espStatus: {type: Boolean, required: true, default: false},
-    lastRequestTime: {type: Date, default: Date.now()},
     registrationDate: {type: Date, required: true, default: Date.now },
     slug: {type: String, required: true, unique: true, default: function(){ return slug(this.name)}},
     measures: [{

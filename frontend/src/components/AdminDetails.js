@@ -97,7 +97,7 @@ const AdminDetails = () => {
                         <td><Photo><img src={item.image} alt='imagem' /></Photo></td>
                         <td>{item._id}</td>
                         <td>{item.name}</td>
-                        <td>{moment(item.registrationDate).format('DD-MM-YYYY')}</td>
+                        <td>{moment(item.date).format('DD-MM-YYYY')}</td>
                         <td>
                             <Button variant="info" onClick={() => manipulateShow(item, choice.edit)}>Editar</Button>&nbsp;&nbsp;
                             <Button variant="danger" onClick={() => manipulateShow(item,choice.delete)}>Deletar</Button>

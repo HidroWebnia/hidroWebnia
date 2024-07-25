@@ -41,7 +41,7 @@ const Cards = ({ device }) => {
         </Link>
         <Content>
           <Title>{device.name}</Title>
-          {device.espStatus && device.measures &&
+          {device.measures &&
             device.measures.map((measure, index) => (
               <div key={index}>
                 <Text>Temperatura: {measure.temperature}°C</Text>
