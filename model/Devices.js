@@ -8,6 +8,8 @@ const deviceSchema = new Schema({
     email: {type: String, required: true},
     image: {type: String, required: true},
     registrationDate: {type: Date, required: true, default: Date.now },
+    espStatus: {type: Boolean, required: true, default: false},
+    lastRequestTime: { type: Date },
     slug: {type: String, required: true, unique: true, default: function(){ return slug(this.name)}},
     measures: [{
         temperature: {type: Number},

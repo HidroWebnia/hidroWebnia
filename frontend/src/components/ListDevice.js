@@ -28,7 +28,7 @@ const ListDevice = () => {
                     <tr key={item._id}>
                         <td><Photo> <img src={item.image} alt='imagem'></img></Photo></td>
                         <td>{item.name}</td>
-                        <td>{moment(item.date).format('DD-MM-YYYY')}</td>
+                        <td>{moment(item.registrationDate).format('DD-MM-YYYY')}</td>
                     </tr>
                     )
                 })}

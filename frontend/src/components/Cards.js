@@ -9,15 +9,18 @@ const Container = styled.div`
 `;
 
 const CardContainer = styled.div`
-  background-color: #fff;
+  background-color: ${props => (props.espStatus ? 'green' : 'red')};
   width: 286px;
   margin: 10px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
 `;
 
 const Image = styled.img`
   width: 286px;
   height: 286px;
   cursor: pointer;
+  border-radius: 12px;
 `;
 
 const Content = styled.div`
@@ -28,28 +31,15 @@ const Title = styled.h2`
   margin-top: 0;
 `;
 
-const Text = styled.p`
-  margin-bottom: 5px;
-`;
-
 const Cards = ({ device }) => {
   return (
     <Container>
-      <CardContainer>
+      <CardContainer espStatus={device.espStatus}>
         <Link to={`/medidas/${device._id}`}>
           <Image src={device.image} alt="Imagem" />
         </Link>
         <Content>
           <Title>{device.name}</Title>
-          {device.measures &&
-            device.measures.map((measure, index) => (
-              <div key={index}>
-                <Text>Temperatura: {measure.temperature}°C</Text>
-                <Text>
-                  Umidade: <br /> {measure.humidity}%
-                </Text>
-              </div>
-            ))}
         </Content>
       </CardContainer>
     </Container>

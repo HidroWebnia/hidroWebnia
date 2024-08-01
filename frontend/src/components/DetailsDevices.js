@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useApi } from '../hooks/useApi';
 import moment from 'moment';
@@ -15,7 +15,7 @@ import time from '../assets/time.png';
 import flux from '../assets/waterFlux.png';
 import uv from '../assets/indiceUV.png';
 import dataHora from '../assets/Data.png';
-import DeviceData from './DeviceData';
+
 
 const Container = styled.div`
   display: flex;
@@ -71,35 +71,16 @@ const StyledImage = styled.img`
   margin-right: 32px;
 `;
 
-const DetailsButton = styled.button`
-  background-color: #26503c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px;
-  width: 150px;
-  margin: 20px;
-  cursor: pointer;
-  &:hover {
-    background-color: #1d3a2d;
-  }
-`;
 
 const DetailsDevices = () => {
   const { id } = useParams();
   const { data } = useApi(`/devices/detalhes/${id}`);
-  const [showDeviceData, setShowDeviceData] = useState(false);
-  const [showTable, setShowTable] = useState(false);
 
   const isDaytime = () => {
     const hour = moment().hour();
     return hour >= 6 && hour < 18;
   };
 
-  const handleButtonClick = () => {
-    setShowDeviceData(!showDeviceData);
-    setShowTable(!showTable);
-  };
 
   const renderCard = (title, value, imageSrc, altText) => (
     <Card>
@@ -196,10 +177,6 @@ const DetailsDevices = () => {
                   </CardContainer>
                 </React.Fragment>
               ))}
-              <DetailsButton onClick={handleButtonClick}>
-                {showDeviceData ? 'Ocultar' : 'Detalhar'}
-              </DetailsButton>
-              {showDeviceData && <DeviceData />}
             </React.Fragment>
           ) : (
             <CardContainer>

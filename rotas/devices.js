@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Devices = require('../model/Devices')
 
-const ONE_MINUTE = 60000
+const THREE_MINUTE = 180000
 
 router.get('/', async (req, res) =>{
     try {
@@ -99,13 +99,13 @@ async function checkInactiveDevices() {
     const now = new Date()
 
     devices.forEach(async (device) => {
-        if ((now - new Date(device.lastRequestTime)) > ONE_MINUTE) {
+        if ((now - new Date(device.lastRequestTime)) > THREE_MINUTE) {
             device.espStatus = false
             await device.save()
         }
     })
 }
 
-setInterval(checkInactiveDevices, ONE_MINUTE)
+setInterval(checkInactiveDevices, THREE_MINUTE)
 
 module.exports = router
