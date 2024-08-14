@@ -1,24 +1,41 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../services/api';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importar os ícones
 
 const Container = styled.div`
   display: flex;
+  height: 100vh;
+`;
+
+const ImageSection = styled.div`
+  flex: 1;
+  background: url('https://img.freepik.com/fotos-premium/sistema-hidroponico-inovador-de-interior-para-o-crescimento-sustentavel-de-vegetais_994764-125301.jpg?w=1060') no-repeat center center;
+  background-size: cover;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #e0e0e0;
+`;
+
+const FormSection = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 20px;
 `;
 
 const LoginBox = styled.div`
-  background: rgba(255, 255, 255, 0.1);
+  background: #fff;
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  max-width: 400px;
   width: 100%;
+  max-width: 400px;
+  position: relative;
 `;
 
 const Title = styled.h2`
@@ -31,8 +48,26 @@ const Input = styled.input`
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: none;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  box-sizing: border-box;
+`;
+
+const PasswordContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const TogglePasswordButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
 `;
 
 const Button = styled.button`
@@ -41,11 +76,19 @@ const Button = styled.button`
   margin: 10px 0;
   border: none;
   border-radius: 5px;
-  background-color: #333;
+  background-color: #007bff;
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
   &:hover {
-    background-color: #555;
+    background-color: #0056b3;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
 `;
 
@@ -54,6 +97,8 @@ const RegisterLink = styled.div`
   margin-top: 20px;
   color: #333;
   cursor: pointer;
+  font-size: 14px;
+
   &:hover {
     text-decoration: underline;
   }
@@ -74,67 +119,77 @@ const Spinner = styled.div`
   }
 `;
 
-const Login = () => {
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
+    e.preventDefault();
+    setLoading(true);
+    setError('');
 
     try {
-      await login({ email, password })
-      navigate('/')
-      window.location.reload()
+      await login({ email, password });
+      navigate('/');
+      window.location.reload();
     } catch (err) {
-        setError(err.message)
+      setError(err.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <Container>
-      <LoginBox>
-        <Title>Login</Title>
-        <form onSubmit={handleSubmit}>
-          <Input 
-            type="email" 
-            placeholder="Email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)}
-            required 
-          />
+      <ImageSection>
+        {/* Adicione uma imagem ou qualquer outro conteúdo visual aqui */}
+      </ImageSection>
+      <FormSection>
+        <LoginBox>
+          <Title>Login</Title>
+          <form onSubmit={handleSubmit}>
+            <Input 
+              type="email" 
+              placeholder="Email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}
+              required 
+            />
 
-          <Input 
-            type="password" 
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required 
-          />
+            <PasswordContainer>
+              <Input 
+                type={showPassword ? 'text' : 'password'} 
+                placeholder="Senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required 
+              />
+              <TogglePasswordButton onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </TogglePasswordButton>
+            </PasswordContainer>
 
-          {error && <p>{error}</p>}
-          
-          <Button type="submit" disabled={loading}>
-            {loading ? <Spinner /> : 'Login'}
-          </Button>
-        </form>
+            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+            
+            <Button type="submit" disabled={loading}>
+              {loading ? <Spinner /> : 'Login'}
+            </Button>
+          </form>
 
-        <RegisterLink onClick={() => navigate('/cadastro')}>
-          Não tem uma conta? Registre-se aqui
-        </RegisterLink>
-        <RegisterLink onClick={() => navigate('/reset-password')}>
-          Esqueceu a senha?
-        </RegisterLink>
-      </LoginBox>
+          <RegisterLink onClick={() => navigate('/cadastro')}>
+            Não tem uma conta? Registre-se aqui
+          </RegisterLink>
+          <RegisterLink onClick={() => navigate('/reset-password')}>
+            Esqueceu a senha?
+          </RegisterLink>
+        </LoginBox>
+      </FormSection>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default LoginPage;
