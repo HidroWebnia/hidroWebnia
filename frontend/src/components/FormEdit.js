@@ -23,12 +23,11 @@ const FormEdit = ({ name, setName, description, setDescription, image, setImage 
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="imagem">
-        <Form.Label>Foto</Form.Label>
-        <Form.Control
-          type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          placeholder="Coloque uma Foto para o seu Device"
+        <Form.Label>Imagem</Form.Label>
+        <Form.Control 
+          type="file" 
+          onChange={(e) => setImage(e.target.files[0])}
+          accept="image/*"
         />
       </Form.Group>
     </Form>

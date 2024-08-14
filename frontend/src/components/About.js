@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import imgAbout from '../assets/img-about.svg';
+import { AuthContext } from './AuthContext';
 
 const StyleAbout = styled.div`
   align-items: center;
@@ -133,6 +134,9 @@ const StyleAbout = styled.div`
 `;
 
 const About = () => {
+
+  const {isAuthenticated} = useContext(AuthContext);
+
   return (
     <StyleAbout>
       <div className="banner">
@@ -148,12 +152,19 @@ const About = () => {
           saudáveis e vibrantes, independentemente do espaço que você tenha
           disponível.
         </p>
-        <Link to="/login">
-          <button className="bt-login">Entrar</button>
-        </Link>
-        <Link to="/register">
-          <button className="bt-register">Cadastrar</button>
-        </Link>
+        {!isAuthenticated ? (
+          <>
+            <Link to="/login">
+              <button className="bt-login">Entrar</button>
+            </Link>
+            <Link to="/cadastro">
+              <button className="bt-register">Cadastrar</button>
+            </Link>
+          </>
+        ) : (
+          <>
+          </>
+        ) }
       </div>
       <div className="sobre">
         <div>

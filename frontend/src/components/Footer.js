@@ -76,9 +76,9 @@ const CombinedFooter = () => {
         </div>
         <div>
           <strong className="titulo">Encontre-nos</strong>
-          <p>WhatsApp: <a href="https://wa.me/+5588988155616" target="_blank" rel="noopener noreferrer">(88) 98815-5616</a></p>
-          <p>Email: <a href="wesneipaiva@gmail.com" target="_blank" rel="noopener noreferrer">wesneipaiva@gmail.com</a></p>
-          <p>Endereço: Rod. Pres. Juscelino Kubitschek - Boa Viagem - CE</p>
+          <p>WhatsApp:</p>
+          <p>Email:</p>
+          <p>Endereço: </p>
         </div>
       </Footer>
       <StyleFooter>

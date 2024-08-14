@@ -26,7 +26,7 @@ const ListDevice = () => {
             {data?.data?.map(item =>{
                 return(
                     <tr key={item._id}>
-                        <td><Photo> <img src={item.image} alt='imagem'></img></Photo></td>
+                        <td><Photo> <img src={`http://localhost:3080/${item.image}`} alt='imagem'></img></Photo></td>
                         <td>{item.name}</td>
                         <td>{moment(item.registrationDate).format('DD-MM-YYYY')}</td>
                     </tr>

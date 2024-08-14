@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const upload = require('../config/multer')
 const Devices = require('../model/Devices')
 
 const THREE_MINUTE = 180000
@@ -21,30 +22,39 @@ router.get('/detalhes/:id', async (req, res) =>{
     }
 })
 
-router.patch('/:id', async(req, res) => {
+router.patch('/:id', upload.single('image'), async (req, res) => {
     try {
-        const updateDevice = await Devices.updateOne(
-            {_id: req.params.id},
-                {name: req.body.name,
-                description: req.body.description,
-                image: req.body.image}
-        )
+        const updateData = {
+            name: req.body.name,
+            description: req.body.description,
+        }
+
+        if (req.file) {
+            updateData.image = req.file.path
+        }
+
+        const updatedDevice = await Devices.findByIdAndUpdate(req.params.id, updateData, { new: true })
+
+        if (!updatedDevice) {
+            return res.status(404).json({ success: false, message: 'Device não encontrado' })
+        }
+
         res.json({
-            sucess: true,
-            updated: updateDevice.nModified
+            success: true,
+            updatedDevice,
         })
-    } catch(err) {
+    } catch (err) {
         res.status(500).send(err)
     }
 })
 
-router.post('/', async (req, res) =>{
+router.post('/', upload.single('image'), async (req, res) =>{
     try {
         const device = new Devices({
             name: req.body.name,
             description: req.body.description,
             email: req.body.email,
-            image: req.body.image,
+            image: req.file.path,
             measures: req.body.measures
         })
         await device.save()
