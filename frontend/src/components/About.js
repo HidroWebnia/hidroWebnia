@@ -2,16 +2,21 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
-import imgAbout from '../assets/img-about.svg';
 import { AuthContext } from './AuthContext';
 
+const imgAbout1 =  'https://img.freepik.com/fotos-gratis/casal-adulto-senior-escolher-vegetais-do-jardim-do-quintal_1150-6037.jpg?t=st=1724327432~exp=1724331032~hmac=ff84cb220b84ceee3201d46928a5b0acc2c69bad2b49eb14e7eb4501e48c8901&w=826'; 
+const imgAbout2 = 'https://img.freepik.com/fotos-premium/cultivo-de-escarola-no-jardim-biologico-generativo-ia_209190-170884.jpg?w=826'; 
+const imgAbout3 = 'https://img.freepik.com/fotos-gratis/grupo-ocupado-de-agricultores-em-uma-moderna-estufa-de-bio-agricultura-empreendedora-usada-para-o-cultivo-de-vegetais-ecologicos-naturais-e-saudaveis-agricultura-regenerativa-usando-fertilizante-de-solo-livre-de-pesticidas_482257-64588.jpg?t=st=1724328112~exp=1724331712~hmac=8669ffa0b1699f57cc2819f868276dcc451f2fc3804051b468a21b4293497e68&w=826'; 
+const imgAbout4 = 'https://img.freepik.com/fotos-gratis/vista-fotorrealista-de-uma-mulher-colhendo-em-um-jardim-organico-sustentavel_23-2151462939.jpg?t=st=1724327927~exp=1724331527~hmac=e9b479fa9ddc337b1a3e9da439cddee0ba71900563b0530a98510a1e7964a6c7&w=826'; 
+const imgAbout5 = 'https://img.freepik.com/fotos-gratis/vista-da-cidade-futurista_23-2150946813.jpg?t=st=1724328191~exp=1724331791~hmac=8aaa3efb444f05d16adab0c0bf8d1a6bb4ffddc43b0880515ff8aa50f933cbbe&w=826'; 
+
 const StyleAbout = styled.div`
-  align-items: center;
   .banner {
     background-image: url(${imgBG});
     background-size: cover;
     background-position: center;
     padding: 96px;
+
     @media (max-width: 768px) {
       padding: 48px;
     }
@@ -19,76 +24,81 @@ const StyleAbout = styled.div`
     @media (max-width: 480px) {
       padding: 24px;
     }
-  }
-  h1 {
-    padding-bottom: 2rem;
-    color: #97c9a0;
-    width: 60%;
-    font-size: 42px;
 
-    @media (max-width: 768px) {
-      width: 80%;
-      font-size: 32px;
+    h1 {
+      padding-bottom: 2rem;
+      color: #97c9a0;
+      width: 60%;
+      font-size: 42px;
+      text-align: left;
+
+      @media (max-width: 768px) {
+        width: 80%;
+        font-size: 32px;
+      }
+
+      @media (max-width: 480px) {
+        width: 100%;
+        font-size: 24px;
+      }
     }
 
-    @media (max-width: 480px) {
-      width: 100%;
-      font-size: 24px;
+    p {
+      padding-bottom: 0.5rem;
+      color: #fff;
+      width: 60%;
+
+      @media (max-width: 768px) {
+        width: 80%;
+      }
+
+      @media (max-width: 480px) {
+        width: 100%;
+      }
+    }
+
+    .bt-login,
+    .bt-register {
+      padding: 8px 36px;
+      border: none;
+      border-radius: 4px;
+      margin: 0 12px 12px 0;
+      transition: background-color 0.3s ease;
+
+      @media (max-width: 480px) {
+        padding: 6px 24px;
+        margin: 0 8px 8px 0;
+      }
+    }
+
+    .bt-login {
+      background-color: #2e8b57;
+      color: #fff;
+    }
+
+    .bt-login:hover {
+      background-color: white;
+      color: #000;
+    }
+
+    .bt-register {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #97c9a0;
+    }
+
+    .bt-register:hover {
+      background-color: #2e8b57;
+      color: #fff;
     }
   }
 
-  p {
-    padding-bottom: 0.5rem;
-    color: #fff;
-    width: 60%;
-    @media (max-width: 768px) {
-      width: 80%;
-    }
-
-    @media (max-width: 480px) {
-      width: 100%;
-    }
-  }
-
-  .bt-login,
-  .bt-register {
-    padding: 8px 36px;
-    border: none;
-    border-radius: 4px;
-    margin: 0 12px 12px 0;
-    transition: background-color 0.3s ease;
-
-    @media (max-width: 480px) {
-      padding: 6px 24px;
-      margin: 0 8px 8px 0;
-    }
-  }
-
-  .bt-login {
-    background-color: #2e8b57;
-    color: #fff;
-  }
-
-  .bt-login:hover {
-    background-color: white;
-    color: #000;
-  }
-
-  .bt-register {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #97c9a0;
-  }
-
-  .bt-register:hover {
-    background-color: #2e8b57;
-    color: #fff;
-  }
-
-  .sobre {
-    padding: 96px 96px 0 96px;
+  .section {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    padding: 96px;
+    justify-content: space-between;
+
     @media (max-width: 1024px) {
       padding: 48px;
     }
@@ -97,49 +107,75 @@ const StyleAbout = styled.div`
       flex-direction: column;
       padding: 24px;
     }
-  }
-  .sobre p {
-    color: #717171;
-    margin-top: 36px;
-    width: 90%;
-    @media (max-width: 768px) {
-      margin-top: 24px;
-      width: 100%;
-      text-align: center;
-    }
-  }
-  h2 {
-    color: #181818;
-    font-size: 24px;
-    width: 90%;
-    @media (max-width: 768px) {
-      width: 100%;
-      text-align: center;
-    }
-  }
-  img {
-    width: 50%;
-    height: auto;
-    margin-left: 20px;
 
-    @media (max-width: 1024px) {
-      width: 60%;
+    .text {
+      flex: 1;
+      max-width: 50%;
+      padding: 0 2rem;
+
+      h2 {
+        color: #181818;
+        font-size: 24px;
+        margin-bottom: 1rem;
+        width: 90%;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      p {
+        color: #717171;
+        line-height: 1.5;
+        width: 90%;
+        text-align: left;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          text-align: center;
+          margin-top: 24px;
+        }
+      }
     }
 
+    .image {
+      flex: 1;
+      max-width: 50%;
+      padding: 0 2rem;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+
+        @media (max-width: 1024px) {
+          width: 60%;
+        }
+
+        @media (max-width: 768px) {
+          width: 80%;
+          margin: 24px 0;
+        }
+      }
+    }
+  }
+
+  .reverse {
+    flex-direction: row-reverse;
+
     @media (max-width: 768px) {
-      width: 80%;
-      margin: 24px 0;
+      flex-direction: column-reverse;
     }
   }
 `;
 
 const About = () => {
-
-  const {isAuthenticated} = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <StyleAbout>
-      <div className="banner">
+      <div className="banner" data-aos="fade-up" data-aos-delay="200">
         <h1>
           Inovando a produção de alimentos com a tecnologia de hidroponia.
         </h1>
@@ -161,36 +197,91 @@ const About = () => {
               <button className="bt-register">Cadastrar</button>
             </Link>
           </>
-        ) : (
-          <>
-          </>
-        ) }
+        ) : null}
       </div>
-      <div className="sobre">
-        <div>
-          <h2>
-            Conheça quem somos e como usamos tecnologia para auxiliar
-            agricultores na produção de alimentos
-          </h2>
-          <p className="description">
-            HidroWebnia é uma solução inovadora destinada a revolucionar o
-            cultivo de alimentos, proporcionando um monitoramento inteligente
-            que torna a agricultura mais moderna e eficiente.
-            <br />
-            <br /> Desenvolvido por Bolsistas/alunos com auxílio de professores
-            do IFCE, em uma parceria com o Centro de Inovação e Difusão de
-            Tecnologias para o Semiárido (CIDTS).HidroWebnia utiliza uma
-            combinação de sensores avançados e tecnologia web para fornecer
-            informações essenciais sobre o seu sistema hidropônico.
-            <br />
-            <br />
-            Com HidroWebnia, você está a um passo de transformar seu cultivo em
-            um processo mais eficiente e produtivo, garantindo plantas mais
-            saudáveis e colheitas mais abundantes. Descubra o futuro da
-            agricultura com HidroWebnia.
+
+      <div className="section" data-aos="fade-up" data-aos-delay="400">
+        <div className="text">
+          <h2>Nossa Missão</h2>
+          <p>
+            Em um mundo onde a eficiência e a sustentabilidade
+            são essenciais, nosso objetivo é transformar a forma 
+            como você cultiva suas plantas com hidroponia. Desenvolvemos
+            um sistema de monitoramento web inovador para hidroponia que 
+            permite aos cultivadores acompanhar em tempo real o ambiente de cultivo,
+            desde a qualidade da água até as condições de luz e temperatura. 
+            Acreditamos que a tecnologia pode facilitar o cultivo de alimentos saudáveis
+            e aumentar a produtividade, garantindo um controle mais preciso e eficiente sobre 
+            o seu sistema hidropônico.
           </p>
         </div>
-        <img src={imgAbout} alt="Sobre nós" />
+        <div className="image">
+          <img src={imgAbout1} alt="Nossa Missão" />
+        </div>
+      </div>
+
+      <div className="section reverse" data-aos="fade-up" data-aos-delay="600">
+        <div className="text">
+          <h2>Nossa História</h2>
+          <p>
+            Desenvolvido por Bolsistas/alunos com auxílio de professores
+            do IFCE, em uma parceria com o Centro de Inovação e Difusão de
+            Tecnologias para o Semiárido (CIDTS). HidroWebnia utiliza uma
+            combinação de sensores avançados e tecnologia web para fornecer
+            informações essenciais sobre o seu sistema hidropônico.
+          </p>
+        </div>
+        <div className="image">
+          <img src={imgAbout2} alt="Nossa História" />
+        </div>
+      </div>
+
+      <div className="section" data-aos="fade-up" data-aos-delay="800">
+        <div className="text">
+          <h2>Nossos Valores</h2>
+          <p>
+            Acreditamos em inovação, sustentabilidade e integridade. 
+            Nossa missão é não apenas oferecer um sistema de monitoramento
+            eficiente, mas também promover práticas de cultivo que respeitem 
+            o meio ambiente e incentivem o crescimento sustentável. Valorizamos 
+            a transparência em nossos processos e estamos comprometidos em fornecer 
+            suporte excepcional aos nossos clientes. Estamos aqui para transformar o
+            cultivo hidropônico em uma experiência positiva e produtiva para todos.
+          </p>
+        </div>
+        <div className="image">
+          <img src={imgAbout3} alt="Nossos Valores" />
+        </div>
+      </div>
+
+      <div className="section reverse" data-aos="fade-up" data-aos-delay="1000">
+        <div className="text">
+          <h2>Nossos Clientes</h2>
+          <p>
+            Temos a honra de trabalhar com uma ampla gama de clientes,
+            desde pequenos agricultores e entusiastas da hidroponia até 
+            grandes empresas do setor agrícola. Nossos clientes confiam 
+            em nosso sistema para fornecer uma solução confiável e eficaz
+            para monitorar e otimizar seus cultivos. Agradecemos a todos que
+            escolheram nosso sistema e estamos comprometidos em continuar a 
+            atender suas necessidades com excelência.
+          </p>
+        </div>
+        <div className="image">
+          <img src={imgAbout4} alt="Nossos Clientes" />
+        </div>
+      </div>
+
+      <div className="section" data-aos="fade-up" data-aos-delay="1200">
+        <div className="text">
+          <h2>Futuro e Inovações</h2>
+          <p>
+            Estamos continuamente buscando maneiras de melhorar e expandir nosso sistema de monitoramento. A inovação é uma parte essencial da nossa filosofia, e estamos investindo em novas tecnologias para oferecer ainda mais recursos e funcionalidades. No futuro, planejamos integrar inteligência artificial para otimização automatizada e expandir nossas capacidades para incluir novos tipos de cultivos e ambientes. Fique atento às nossas atualizações e prepare-se para uma jornada emocionante no cultivo hidropônico.
+          </p>
+        </div>
+        <div className="image">
+          <img src={imgAbout5} alt="Futuro e Inovações" />
+        </div>
       </div>
     </StyleAbout>
   );
