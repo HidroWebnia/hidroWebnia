@@ -14,6 +14,7 @@ import NewPassword from './pages/NewPassword';
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 import AuthProvider from './components/AuthContext'; 
+import ContactButton from './components/ContactButton';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/medidas/:id" element={<PrivateRoute element={<DetailsDevices />} />} />
           <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
         </Routes>
+        <ContactButton /> 
       </Router>
     </AuthProvider>
   );
