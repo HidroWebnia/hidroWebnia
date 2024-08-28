@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useApi } from '../hooks/useApi';
 import moment from 'moment';
@@ -15,7 +15,6 @@ import time from '../assets/time.png';
 import flux from '../assets/waterFlux.png';
 import uv from '../assets/indiceUV.png';
 import dataHora from '../assets/Data.png';
-
 
 const Container = styled.div`
   display: flex;
@@ -71,16 +70,30 @@ const StyledImage = styled.img`
   margin-right: 32px;
 `;
 
-
 const DetailsDevices = () => {
   const { id } = useParams();
-  const { data } = useApi(`/devices/detalhes/${id}`);
+  const [deviceData, setDeviceData] = useState(null);
+  const { data, loading } = useApi(`/devices/detalhes/${id}`);
+  const [currentTime, setCurrentTime] = useState(moment());
+
+  useEffect(() => {
+    if (data) {
+      setDeviceData(data.data);
+    }
+  }, [data]);
+    
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(moment());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const isDaytime = () => {
     const hour = moment().hour();
     return hour >= 6 && hour < 18;
   };
-
 
   const renderCard = (title, value, imageSrc, altText) => (
     <Card>
@@ -92,109 +105,121 @@ const DetailsDevices = () => {
     </Card>
   );
 
-  return (
-    <Container>
-      {data?.data ? (
-        <React.Fragment>
-          <Header>
-            <h1>{data.data.name}</h1>
-          </Header>
-          {data.data.measures?.length > 0 ? (
-            <React.Fragment>
-              {data.data.measures.map((measure, index) => (
-                <React.Fragment key={index}>
-                  <CardContainer>
-                    <Card className={isDaytime() ? 'daytime' : 'nighttime'}>
-                      <StyledImage src={dataHora} alt="data icon" />
-                      <CardContent>
-                        <h2 className="DataHora">Data e Hora:</h2>
-                        <p className="DataHora">
-                          {moment().format('DD/MM/YY')} -{' '}
-                          {moment().format('HH:mm')}
-                        </p>
-                      </CardContent>
-                    </Card>
-                    {renderCard(
-                      'Temperatura',
-                      measure.temperature,
-                      temperature,
-                      'temperature icon'
-                    )}
-                    {renderCard(
-                      'Umidade',
-                      measure.humidity,
-                      humidity,
-                      'humidity icon'
-                    )}
-                    {renderCard(
-                      'Luminosidade',
-                      measure.luminosity,
-                      luminosity,
-                      'luminosity icon'
-                    )}
-                  </CardContainer>
-                  <CardContainer>
-                    {renderCard(
-                      'Temperatura da água',
-                      measure.waterTemperature,
-                      temperatureWater,
-                      'temperature water icon'
-                    )}
-                    {renderCard(
-                      'Fluxo da água',
-                      measure.waterFlux,
-                      flux,
-                      'water flux icon'
-                    )}
-                    {renderCard('PH da água', measure.ph, ph, 'ph icon')}
-                    {renderCard(
-                      'Nível do recipiente',
-                      measure.containerLevel,
-                      levelWater,
-                      'level water icon'
-                    )}
-                  </CardContainer>
-                  <CardContainer>
-                    {renderCard(
-                      'Tempo online',
-                      measure.onlineTime,
-                      time,
-                      'time icon'
-                    )}
-                    {renderCard(
-                      'Status do motor',
-                      measure.engineStatus,
-                      motor,
-                      'motor icon'
-                    )}
-                    {renderCard(
-                      'Condutividade',
-                      measure.conductivity,
-                      condutivity,
-                      'conductivity icon'
-                    )}
-                    {renderCard('Índice UV', measure.uv, uv, 'uv icon')}
-                  </CardContainer>
-                </React.Fragment>
-              ))}
-            </React.Fragment>
-          ) : (
-            <CardContainer>
-              <Card>
-                <CardContent>
-                  <h2>Sem dados disponíveis</h2>
-                  <p>
-                    Nenhuma medida foi registrada para este dispositivo ainda.
-                  </p>
-                </CardContent>
-              </Card>
-            </CardContainer>
-          )}
-        </React.Fragment>
-      ) : (
+  if (loading) {
+    return (
+      <Container>
         <Header>
           <h1>Carregando...</h1>
         </Header>
+      </Container>
+    );
+  }
+
+  if (!deviceData) {
+    return (
+      <Container>
+        <Header>
+          <h1>Dispositivo não encontrado ou excluído</h1>
+        </Header>
+      </Container>
+    );
+  }
+
+  return (
+    <Container>
+      <Header>
+        <h1>{deviceData.name}</h1>
+      </Header>
+      {deviceData.measures?.length > 0 ? (
+        <React.Fragment>
+          {deviceData.measures.map((measure, index) => (
+            <React.Fragment key={index}>
+              <CardContainer>
+                <Card className={isDaytime() ? 'daytime' : 'nighttime'}>
+                  <StyledImage src={dataHora} alt="data icon" />
+                  <CardContent>
+                    <h2 className="DataHora">Data e Hora:</h2>
+                    <p className="DataHora">
+                      {currentTime.format('DD/MM/YY')} -{' '}
+                      {currentTime.format('HH:mm:ss')}
+                    </p>
+                  </CardContent>
+                </Card>
+                {renderCard(
+                  'Temperatura',
+                  measure.temperature,
+                  temperature,
+                  'temperature icon'
+                )}
+                {renderCard(
+                  'Umidade',
+                  measure.humidity,
+                  humidity,
+                  'humidity icon'
+                )}
+                {renderCard(
+                  'Luminosidade',
+                  measure.luminosity,
+                  luminosity,
+                  'luminosity icon'
+                )}
+              </CardContainer>
+              <CardContainer>
+                {renderCard(
+                  'Temperatura da água',
+                  measure.waterTemperature,
+                  temperatureWater,
+                  'temperature water icon'
+                )}
+                {renderCard(
+                  'Fluxo da água',
+                  measure.waterFlux,
+                  flux,
+                  'water flux icon'
+                )}
+                {renderCard('PH da água', measure.ph, ph, 'ph icon')}
+                {renderCard(
+                  'Nível do recipiente',
+                  measure.containerLevel,
+                  levelWater,
+                  'level water icon'
+                )}
+              </CardContainer>
+              <CardContainer>
+                {renderCard(
+                  'Tempo online',
+                  measure.onlineTime,
+                  time,
+                  'time icon'
+                )}
+                {renderCard(
+                  'Status do motor',
+                  measure.engineStatus,
+                  motor,
+                  'motor icon'
+                )}
+                {renderCard(
+                  'Condutividade',
+                  measure.conductivity,
+                  condutivity,
+                  'conductivity icon'
+                )}
+                {renderCard('Índice UV', measure.uv, uv, 'uv icon')}
+              </CardContainer>
+            </React.Fragment>
+          ))}
+        </React.Fragment>
+      ) : (
+        <CardContainer>
+          <Card>
+            <CardContent>
+              <h2>Sem dados disponíveis</h2>
+              <p>
+                Nenhuma medida foi registrada para este dispositivo ainda.
+              </p>
+            </CardContent>
+          </Card>
+        </CardContainer>
       )}
     </Container>
   );

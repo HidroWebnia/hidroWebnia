@@ -36,7 +36,7 @@ const Cards = ({ device }) => {
     <Container>
       <CardContainer espStatus={device.espStatus}>
         <Link to={`/medidas/${device._id}`}>
-          <Image src={`https://devicesserver.onrender.com/${device.image}`} alt="Imagem" />
+          <Image src={`http://localhost:3080/${device.image}`} alt="Imagem" />
         </Link>
         <Content>
           <Title>{device.name}</Title>
