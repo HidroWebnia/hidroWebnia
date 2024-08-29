@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { register } from '../services/api';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Biblioteca de ícones FontAwesome
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const Container = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ const InputWrapper = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 10px;
-  padding-right: 40px; /* Espaço para o ícone */
+  padding-right: 40px;
   border: 1px solid #ddd;
   border-radius: 5px;
 `;
@@ -127,23 +127,22 @@ const Register = () => {
     setError('');
 
     if (password !== confirmPassword) {
-      setError('As senhas não conferem!');
-      setLoading(false);
-      return;
+        setError('As senhas não conferem!');
+        setLoading(false);
+        return;
     }
 
     try {
-      const response = await register({ username, email, password });
-
-      if (response && response.status === 201) {
-        navigate('/login');
-      }
+        const response = await register({ username, email, password, confirmPassword }, navigate);
+        if (response) {
+            navigate('/login')
+        }
     } catch (err) {
-      setError(err.message);
+        setError(err.message);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
   return (
     <Container>
