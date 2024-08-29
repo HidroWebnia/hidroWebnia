@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/api';
 import styled from 'styled-components';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importar os ícones
-
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 const Container = styled.div`
   display: flex;
   height: 100vh;
@@ -11,7 +10,7 @@ const Container = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url('https://img.freepik.com/fotos-premium/sistema-hidroponico-inovador-de-interior-para-o-crescimento-sustentavel-de-vegetais_994764-125301.jpg?w=1060') no-repeat center center;
+  background: url('https://img.freepik.com/fotos-gratis/sistema-de-hidroponia-plantio-de-vegetais-e-ervas-sem-usar-o-solo-para-a-saude_1150-8154.jpg?w=900&t=st=1724961349~exp=1724961949~hmac=58ab206700d046e5ee58c357c28cd9dcc5ead79b3146c30062fe6a11a6353d9d') no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -146,7 +145,6 @@ const LoginPage = () => {
   return (
     <Container>
       <ImageSection>
-        {/* Adicione uma imagem ou qualquer outro conteúdo visual aqui */}
       </ImageSection>
       <FormSection>
         <LoginBox>

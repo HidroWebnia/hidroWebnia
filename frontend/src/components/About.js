@@ -128,7 +128,7 @@ const StyleAbout = styled.div`
       p {
         color: #717171;
         line-height: 1.5;
-        width: 90%;
+        width: 100%;
         text-align: left;
 
         @media (max-width: 768px) {
@@ -227,7 +227,7 @@ const About = () => {
             Desenvolvido por Bolsistas/alunos com auxílio de professores
             do IFCE, em uma parceria com o Centro de Inovação e Difusão de
             Tecnologias para o Semiárido (CIDTS). HidroWebnia utiliza uma
-            combinação de sensores avançados e tecnologia web para fornecer
+            combinação de sensores e tecnologia web para fornecer
             informações essenciais sobre o seu sistema hidropônico.
           </p>
         </div>

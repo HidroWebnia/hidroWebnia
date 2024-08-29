@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { register } from '../services/api';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Biblioteca de ícones FontAwesome
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url('https://img.freepik.com/fotos-gratis/jardim-sustentavel-fotorrealista-com-plantas-cultivadas-em-casa_23-2151479061.jpg?t=st=1723643857~exp=1723647457~hmac=a0d75868df96b9fd2ba888c5185a215cb1979cd5af1d8e1d8d241e7df5206424&w=360') no-repeat center center;
+  background: url('https://img.freepik.com/fotos-premium/vista-de-plantas-em-vaso-em-estufa_1048944-1314777.jpg?w=900') no-repeat center center;
   background-size: cover;
 `;
 
@@ -48,7 +48,7 @@ const InputWrapper = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 10px;
-  padding-right: 40px; /* Espaço para o ícone */
+  padding-right: 40px; 
   border: 1px solid #ddd;
   border-radius: 5px;
 `;
@@ -148,7 +148,6 @@ const Register = () => {
   return (
     <Container>
       <ImageSection>
-        {/* Aqui você pode adicionar uma imagem ou qualquer outro conteúdo visual */}
       </ImageSection>
       <FormSection>
         <RegisterBox>
