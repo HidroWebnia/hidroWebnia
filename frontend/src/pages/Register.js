@@ -133,7 +133,7 @@ const Register = () => {
     }
 
     try {
-      const response = await register({ username, email, password });
+      const response = await register({ username, email, password, confirmPassword‎});
       if (response) {
         navigate('/login');
       }
