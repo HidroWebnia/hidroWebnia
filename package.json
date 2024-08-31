@@ -1,0 +1,37 @@
+{
+  "name": "devices",
+  "version": "1.0.0",
+  "description": "API de Devices",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "backend": "nodemon app.js",
+    "frontend": "npm start --prefix frontend",
+    "devices": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "render-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "João Lucas",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
+    "aos": "^2.3.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "googleapis": "^135.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "slug": "^9.0.0",
+    "styled-components": "^6.1.11"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
