@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://devicesserver.onrender.com/api/'
+    baseURL: 'http://localhost:3080/api/'
 })
 
 export default api

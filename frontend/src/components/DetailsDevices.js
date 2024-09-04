@@ -15,6 +15,9 @@ import time from '../assets/time.png';
 import flux from '../assets/waterFlux.png';
 import uv from '../assets/indiceUV.png';
 import dataHora from '../assets/Data.png';
+import io from 'socket.io-client';
+
+const socket = io('http://localhost:3080'); // Substitua pela URL do seu servidor
 
 const Container = styled.div`
   display: flex;
@@ -81,7 +84,7 @@ const DetailsDevices = () => {
       setDeviceData(data.data);
     }
   }, [data]);
-    
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(moment());
@@ -89,6 +92,22 @@ const DetailsDevices = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    socket.emit('subscribeToDevice', id);
+
+    socket.on('deviceUpdated', (updatedDevice) => {
+      console.log(updatedDevice)
+      if (updatedDevice._id === id) {
+        setDeviceData(updatedDevice);
+      }
+    });
+
+    return () => {
+      socket.off('deviceUpdated');
+      socket.emit('unsubscribeFromDevice', id);
+    };
+  }, [id]);
 
   const isDaytime = () => {
     const hour = moment().hour();
