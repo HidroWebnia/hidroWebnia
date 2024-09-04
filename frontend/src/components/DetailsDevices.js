@@ -17,7 +17,7 @@ import uv from '../assets/indiceUV.png';
 import dataHora from '../assets/Data.png';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3080'); // Substitua pela URL do seu servidor
+const socket = io('https://devicesserver.onrender.com');
 
 const Container = styled.div`
   display: flex;

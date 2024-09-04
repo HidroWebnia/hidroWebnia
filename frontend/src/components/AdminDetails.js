@@ -94,7 +94,7 @@ const AdminDetails = () => {
             <tbody>
                 {data?.data?.map(item => (
                     <tr key={item._id}>
-                        <td><Photo><img src={`http://localhost:3080/${item.image}`} alt='imagem' /></Photo></td>
+                        <td><Photo><img src={`https://devicesserver.onrender.com/${item.image}`} alt='imagem' /></Photo></td>
                         <td>{item._id}</td>
                         <td>{item.name}</td>
                         <td>{moment(item.registrationDate).format('DD-MM-YYYY')}</td>
