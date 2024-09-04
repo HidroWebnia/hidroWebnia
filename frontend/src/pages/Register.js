@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url('https://img.freepik.com/fotos-gratis/jardim-sustentavel-fotorrealista-com-plantas-cultivadas-em-casa_23-2151479061.jpg?t=st=1723643857~exp=1723647457~hmac=a0d75868df96b9fd2ba888c5185a215cb1979cd5af1d8e1d8d241e7df5206424&w=360') no-repeat center center;
+  background: url('https://img.freepik.com/fotos-premium/vista-de-plantas-em-vaso-em-estufa_1048944-1314777.jpg?w=740') no-repeat center center;
   background-size: cover;
 `;
 
@@ -74,7 +74,7 @@ const Button = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #555;
+    background-color: #0056b3;
   }
 
   &:disabled {
@@ -97,7 +97,7 @@ const RegisterLink = styled.div`
 
 const Spinner = styled.div`
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #fff;
+  border-left-color: #007bff;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -127,28 +127,26 @@ const Register = () => {
     setError('');
 
     if (password !== confirmPassword) {
-        setError('As senhas não conferem!');
-        setLoading(false);
-        return;
+      setError('As senhas não conferem!');
+      setLoading(false);
+      return;
     }
 
     try {
-        const response = await register({ username, email, password, confirmPassword }, navigate);
-        if (response) {
-            navigate('/login')
-        }
+      const response = await register({ username, email, password, confirmPassword });
+      if (response) {
+        navigate('/login');
+      }
     } catch (err) {
-        setError(err.message);
+      setError(err.message || 'Ocorreu um erro!');
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-};
+  };
 
   return (
     <Container>
-      <ImageSection>
-        {/* Aqui você pode adicionar uma imagem ou qualquer outro conteúdo visual */}
-      </ImageSection>
+      <ImageSection />
       <FormSection>
         <RegisterBox>
           <Title>Cadastro</Title>
@@ -164,8 +162,8 @@ const Register = () => {
             </InputWrapper>
             <InputWrapper>
               <Input
-                type="email"
-                placeholder="Email"
+                type='email'
+                placeholder='Email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -174,7 +172,7 @@ const Register = () => {
             <InputWrapper>
               <Input
                 type={showPassword ? 'text' : 'password'}
-                placeholder="Senha"
+                placeholder='Senha'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

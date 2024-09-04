@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/api';
 import styled from 'styled-components';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importar os ícones
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; 
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const ImageSection = styled.div`
   flex: 1;
-  background: url('https://img.freepik.com/fotos-premium/sistema-hidroponico-inovador-de-interior-para-o-crescimento-sustentavel-de-vegetais_994764-125301.jpg?w=1060') no-repeat center center;
+  background: url('https://img.freepik.com/fotos-premium/close-up-de-plantas-em-vasos-em-estufa_1048944-15630384.jpg?w=740') no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
