@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://devicesserver.onrender.com/api/'
+    baseURL: 'http://localhost:3080/api/'
 })
 
 export default api
@@ -16,21 +16,42 @@ export const deleteRegister = (id) => {
 }
 
 export const editRegister = (id, { name, description, image }) => {
-    return api.patch(`devices/${id}`, { name, description, image }) 
-        .then(response => {
-            console.log('Editado', response)
-            window.location.reload()
-        })
-        .catch(err => console.log(err))
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('description', description)
+    if (image) {
+        formData.append('image', image)
+    }
+
+    return api.patch(`devices/${id}`, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    })
+    .then(response => {
+        console.log('Editado', response)
+        window.location.reload()
+    })
+    .catch(err => console.log(err))
 }
 
-export const addRegister = ({name, description, email, image, registrationDate}) => {
-    return api.post(`devices`, { name, description, email, image, registrationDate}) 
-        .then(response => {
-            console.log('Adicionado', response)
-            window.location.reload()
-        })
-        .catch(err => console.log(err))
+export const addRegister = ({name, description, email, image}) => {
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('description', description)
+    formData.append('email', email)
+    formData.append('image', image)
+
+    return api.post('devices', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    })
+    .then(response => {
+        console.log('Adicionado', response)
+        window.location.reload()
+    })
+    .catch(err => console.log(err))
 }
 
 export const login = ({ email, password }) => {

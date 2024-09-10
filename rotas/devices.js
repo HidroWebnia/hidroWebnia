@@ -2,8 +2,6 @@ const router = require('express').Router()
 const upload = require('../config/multer')
 const Devices = require('../model/Devices')
 
-const THREE_MINUTE = 180000
-
 router.get('/', async (req, res) =>{
     try {
         const devices = await Devices.find()
@@ -54,8 +52,7 @@ router.post('/', upload.single('image'), async (req, res) =>{
             name: req.body.name,
             description: req.body.description,
             email: req.body.email,
-            image: req.file.path,
-            measures: req.body.measures
+            image: req.file.path
         })
         await device.save()
         res.json(device)
@@ -64,27 +61,6 @@ router.post('/', upload.single('image'), async (req, res) =>{
     }
 })
 
-router.post('/espStatus/:id', async (req, res) => {
-    try {
-
-        const {espStatus, measures} = req.body
-        const device = await device.findById(req.params.id)
-
-        if(!device){
-            return res.status(404).json({ msg: 'Device não encontrado!' })
-        }
-
-        device.espStatus = espStatus
-        device.lastRequestTime = new Date()
-        device.measures = measures
-        await device.save()
-
-        res.json({ sucess: true, device })
-
-    } catch (err) {
-        res.status(500).send(err)
-    }
-})
 
 router.delete('/:id', async (req, res) => {
     try {
@@ -104,18 +80,5 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-async function checkInactiveDevices() {
-    const devices = await Devices.find()
-    const now = new Date()
-
-    devices.forEach(async (device) => {
-        if ((now - new Date(device.lastRequestTime)) > THREE_MINUTE) {
-            device.espStatus = false
-            await device.save()
-        }
-    })
-}
-
-setInterval(checkInactiveDevices, THREE_MINUTE)
 
 module.exports = router

@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const CardContainer = styled.div`
-  background-color: ${props => (props.espStatus ? 'green' : 'red')};
+  background-color: white;
   width: 286px;
   margin: 10px;
   border-radius: 12px;
@@ -34,9 +34,9 @@ const Title = styled.h2`
 const Cards = ({ device }) => {
   return (
     <Container>
-      <CardContainer espStatus={device.espStatus}>
+      <CardContainer>
         <Link to={`/medidas/${device._id}`}>
-          <Image src={`https://devicesserver.onrender.com/${device.image}`} alt="Imagem" />
+          <Image src={`http://localhost:3080/${device.image}`} alt="Imagem" />
         </Link>
         <Content>
           <Title>{device.name}</Title>
