@@ -181,10 +181,10 @@ const About = () => {
       <div className="banner" data-aos="fade-up" data-aos-delay="200">
         <h1>Inovando a produção de alimentos com a tecnologia de hidroponia.</h1>
         <p>
-        Bem-vindo ao HidroWebnia, o seu destino online para tudo relacionado à hidroponia! 
-        Navegue em nosso vasto catálogo de equipamentos, suprimentos e conhecimento especializado 
-        para iniciar e aprimorar seu próprio jardim hidropônico. Desde sistemas de cultivo até nutrientes
-         personalizados, estamos aqui para ajudá-lo a cultivar plantas saudáveis e vibrantes, independentemente
+          Bem-vindo ao HidroWebnia, o seu destino online para tudo relacionado à hidroponia!
+          Navegue em nosso vasto catálogo de equipamentos, suprimentos e conhecimento especializado
+          para iniciar e aprimorar seu próprio jardim hidropônico. Desde sistemas de cultivo até nutrientes
+          personalizados, estamos aqui para ajudá-lo a cultivar plantas saudáveis e vibrantes, independentemente
           do espaço que você tenha disponível.
         </p>
         {!isAuthenticated ? (
@@ -198,18 +198,17 @@ const About = () => {
           </>
         ) : null}
       </div>
-
-      <div className="about-section">
+      <div className="about-section" data-aos="fade-up" data-aos-delay="300"> 
         <div className="image-wrapper">
           <img src="https://i.pinimg.com/564x/e7/84/40/e78440635911a9134f478f4dc6886c4e.jpg" alt="Suporte técnico" />
         </div>
         <div className="content">
           <h2><b>Sobre Nós</b></h2>
           <p>
-          No HidroWebnia, estamos mudando a forma como cultivamos alimentos. 
-          Usamos tecnologia de hidroponia para tornar o cultivo mais sustentável e acessível.Nossa equipe é formada por especialistas em agricultura e tecnologia, que trabalham para oferecer soluções simples e eficientes para todos. 
-          Queremos ajudar você a cultivar plantas saudáveis, seja em casa ou em grandes estufas. Acreditamos que o conhecimento deve ser compartilhado. Por isso, oferecemos suporte técnico
-           e recursos educativos para que todos possam aprender e crescer conosco. Junte - se a nós e descubra como a hidroponia pode transformar sua maneira de cultivar!
+            No HidroWebnia, estamos mudando a forma como cultivamos alimentos.
+            Usamos tecnologia de hidroponia para tornar o cultivo mais sustentável e acessível. Nossa equipe é formada por especialistas em agricultura e tecnologia, que trabalham para oferecer soluções simples e eficientes para todos.
+            Queremos ajudar você a cultivar plantas saudáveis, seja em casa ou em grandes estufas. Acreditamos que o conhecimento deve ser compartilhado. Por isso, oferecemos suporte técnico
+            e recursos educativos para que todos possam aprender e crescer conosco. Junte-se a nós e descubra como a hidroponia pode transformar sua maneira de cultivar!
           </p>
           <div className="gallery">
             <img src="https://i.pinimg.com/564x/9f/30/55/9f305562885abb53d9f34b8e5dbaac62.jpg" alt="App 1" />
@@ -219,12 +218,10 @@ const About = () => {
           </div>
 
           <div style={{ marginTop: '20px' }}>
-  <Button variant="success">
-    Conheça nossos planos
-  </Button>
-</div>
-
-
+            <Button variant="success">
+              Conheça nossos planos
+            </Button>
+          </div>
         </div>
       </div>
     </StyleAbout>
