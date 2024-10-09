@@ -105,7 +105,7 @@ const Time = () => {
         <h1>Equipe</h1>
         <hr/>
 
-        <div className="members">
+        <div className="members" data-aos="fade-up" data-aos-delay="200">
           <div className="card">
             <img src={renato} alt="Renato William" />
             <p>Renato William</p>

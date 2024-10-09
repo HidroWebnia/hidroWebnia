@@ -1,88 +1,79 @@
 import React from 'react';
 import styled from 'styled-components';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
-AOS.init();
-
-const TestimonialsSection = styled.section`
-  background-color: #f4f4f4; 
-  padding: 60px 96px;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    padding: 40px 24px;
-  }
-
-  h2 {
-    color: #333; 
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 40px;
-
-    @media (max-width: 768px) {
-      font-size: 28px;
-    }
-  }
-
-  .testimonials-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 800px;
-    margin: 0 auto;
-
-    .testimonial {
-      background: #ffffff; 
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      text-align: left;
-      transition: box-shadow 0.3s ease;
-      border-left: 5px solid #2e8b57; 
-
-      &:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-      }
-
-      p {
-        color: #555;
-        font-style: italic;
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 10px;
-      }
-
-      .client-name {
-        font-weight: 600;
-        color: #333;
-        font-size: 16px;
-        margin-top: 10px;
-      }
-    }
-  }
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: -55px; 
 `;
 
-const Testimonials = () => {
+const Testemunho = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+`;
+
+const Foto = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+`;
+
+const Nome = styled.p`
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: left;
+`;
+
+const Descricao = styled.p`
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: left;
+`;
+
+const TestemunhoComponent = () => {
   return (
-    <TestimonialsSection data-aos="fade-up">
-      <h2>O que nossos clientes dizem</h2>
-      <div className="testimonials-container">
-        <div className="testimonial" data-aos="fade-up" data-aos-delay="100">
-          <p>"HidroWebnia transformou a maneira como cultivo minhas plantas. O suporte é excelente e a tecnologia é de ponta!"</p>
-          <div className="client-name">Maria Silva</div>
-        </div>
-        <div className="testimonial" data-aos="fade-up" data-aos-delay="200">
-          <p>"O sistema de monitoramento é incrível e fácil de usar. Recomendo para qualquer um que queira otimizar seu cultivo."</p>
-          <div className="client-name">João Pereira</div>
-        </div>
-        <div className="testimonial" data-aos="fade-up" data-aos-delay="300">
-          <p>"A equipe de HidroWebnia é muito dedicada e sempre pronta para ajudar. A experiência tem sido excepcional."</p>
-          <div className="client-name">Ana Costa</div>
-        </div>
-      </div>
-    </TestimonialsSection>
+    <Container data-aos="fade-up" data-aos-delay="200">
+      <Testemunho>
+        <Foto src="https://img.freepik.com/fotos-gratis/homem-retrato-rindo_23-2148859448.jpg?t=st=1728478365~exp=1728481965~hmac=70b272fc1b38e2b4e98628df0d8fab50c459f92054ea7e2d3924eda3dc57e652&w=740" alt="Foto do cliente" />
+        <Nome>João Silva</Nome>
+        <Descricao>
+          "Eu estava procurando por um serviço de qualidade para hidroponia e encontrei aqui."
+        </Descricao>
+      </Testemunho>
+      <Testemunho>
+        <Foto src="https://img.freepik.com/fotos-gratis/retrato-de-uma-jovem-sorrindo_23-2149260597.jpg?t=st=1728478396~exp=1728481996~hmac=cebb746e8ea0e3df5387b62f545bbde05a05c795e5e907fc0533c1c1b5d68ea4&w=900" alt="Foto do cliente" />
+        <Nome>Maria Santos</Nome>
+        <Descricao>
+          "A equipe do HidroWebnia foi muito atenciosa e me ajudou a resolver meu problema."
+        </Descricao>
+      </Testemunho>
+      <Testemunho>
+        <Foto src="https://img.freepik.com/fotos-gratis/jovem-homem-posando-isolado-contra-a-parede-em-branco-do-estudio_273609-12356.jpg?t=st=1728478422~exp=1728482022~hmac=b98eda948ab14f44639a15a639be4e6d7221e53de4af6f9e5224010a2bed66c6&w=900 " alt="Foto do cliente" />
+        <Nome>Pedro Oliveira</Nome>
+        <Descricao>
+          "O serviço foi rápido e eficiente.
+          Estou muito satisfeito com o resultado."
+        </Descricao>
+      </Testemunho>
+    </Container>
   );
 };
 
-export default Testimonials;
+export default TestemunhoComponent;

@@ -124,6 +124,7 @@ const StyleAbout = styled.div`
   .about-section .content h2 {
     color: #000;
     font-size: 24px;
+    font-weight: bold;
     margin-bottom: 15px;
     margin-top: 10px;
   }
@@ -133,6 +134,7 @@ const StyleAbout = styled.div`
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 20px;
+    text-align: left;
   }
 
   .about-section .content a {
@@ -203,23 +205,22 @@ const About = () => {
           <img src="https://i.pinimg.com/564x/e7/84/40/e78440635911a9134f478f4dc6886c4e.jpg" alt="Suporte técnico" />
         </div>
         <div className="content">
-          <h2><b>Sobre Nós</b></h2>
+          <h2>Sobre Nós</h2>
           <p>
             No HidroWebnia, estamos mudando a forma como cultivamos alimentos.
-            Usamos tecnologia de hidroponia para tornar o cultivo mais sustentável e acessível. Nossa equipe é formada por especialistas em agricultura e tecnologia, que trabalham para oferecer soluções simples e eficientes para todos.
-            Queremos ajudar você a cultivar plantas saudáveis, seja em casa ou em grandes estufas. Acreditamos que o conhecimento deve ser compartilhado. Por isso, oferecemos suporte técnico
-            e recursos educativos para que todos possam aprender e crescer conosco. Junte-se a nós e descubra como a hidroponia pode transformar sua maneira de cultivar!
+            Usamos tecnologia de hidroponia para tornar o cultivo mais sustentável e acessível.
+             Nossa equipe é formada por especialistas em agricultura e tecnologia, que trabalham 
+             para oferecer soluções simples e eficientes para todos.
+            Queremos ajudar você a cultivar plantas saudáveis, seja em casa 
+            ou em grandes estufas. Acreditamos que o conhecimento deve ser compartilhado. Por isso, oferecemos suporte técnico
+            e recursos educativos para que todos possam aprender e crescer conosco. 
+            Junte-se a nós e descubra como a hidroponia pode transformar sua maneira de cultivar!
           </p>
-          <div className="gallery">
-            <img src="https://i.pinimg.com/564x/9f/30/55/9f305562885abb53d9f34b8e5dbaac62.jpg" alt="App 1" />
-            <img src="https://i.pinimg.com/564x/73/69/30/7369309f89a5b36d8e15732502e7b9f6.jpg" alt="App 2" />
-            <img src="https://i.pinimg.com/564x/b9/5b/6c/b95b6c695265c84e7f120846b0af00fe.jpg" alt="App 3" />
-            <img src="https://i.pinimg.com/564x/7a/03/45/7a0345fa8f64cbf5ecb0e1851074607e.jpg" alt="App 4" />
-          </div>
+         
 
           <div style={{ marginTop: '20px' }}>
             <Button variant="success">
-              Conheça nossos planos
+              Saiba Mais
             </Button>
           </div>
         </div>
