@@ -6,7 +6,7 @@ import ivan from '../assets/ivan.svg';
 import joao from '../assets/joao.svg';
 import wesney from '../assets/wesney.svg';
 import renato from '../assets/renato.svg';
-import rodrigo from '../assets/rodrigo.svg';
+import galindo from '../assets/galindo.png';
 
 const StyleTime = styled.div`
   padding: 96px;
@@ -34,6 +34,7 @@ const StyleTime = styled.div`
     @media (max-width: 768px) {
       flex-direction: column;
     }
+    border-radius: 15px;
   }
 
   hr {
@@ -57,7 +58,7 @@ const StyleTime = styled.div`
     }
 
     @media (max-width: 480px) {
-      width: 100%;
+      width: 70%;
     }
   }
 
@@ -159,14 +160,14 @@ const Time = () => {
           </div>
 
           <div className="card">
-            <img src={rodrigo} alt="Rodrigo de Freitas" />
-            <p>Rodrigo Freitas</p>
+            <img src={galindo} alt="Lucas Galindo" />
+            <p>Lucas Galindo</p>
             <div className="card-time">
               <p>Sistemas Embarcados</p>
               <div className="links">
-                <a href="https://www.linkedin.com/in/rodrigo-de-freitas" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-                <a href="https://www.instagram.com/rodrigo.de.freitas" target="_blank" rel="noopener noreferrer"><RiInstagramFill /></a>
-                <a href="https://github.com/rodrigo-de-freitas" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                <a href="https://www.linkedin.com/in/lucasgalindoiot/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                <a href="https://www.instagram.com/lucras_galindo/" target="_blank" rel="noopener noreferrer"><RiInstagramFill /></a>
+                <a href="https://github.com/Lucras22" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               </div>
             </div>
           </div>
