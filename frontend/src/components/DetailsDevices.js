@@ -192,7 +192,7 @@ const DetailsDevices = () => {
                 )}
                 {renderCard(
                   'Fluxo da água',
-                  measure.waterFlux,
+                  measure.waterFlux ? 'Tem Fluxo' : 'Não tem Fluxo',
                   flux,
                   'water flux icon'
                 )}
@@ -213,7 +213,7 @@ const DetailsDevices = () => {
                 )}
                 {renderCard(
                   'Status do motor',
-                  measure.engineStatus,
+                  measure.engineStatus ? 'Ligado' : 'Desligado',
                   motor,
                   'motor icon'
                 )}

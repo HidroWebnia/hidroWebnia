@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const upload = require('../config/multer')
 const Devices = require('../model/Devices')
+const esp32Controller = require('../controllers/esp32Controller')
 
 router.get('/', async (req, res) =>{
     try {
@@ -60,6 +61,8 @@ router.post('/', upload.single('image'), async (req, res) =>{
         res.status(500).send(err)
     }
 })
+
+router.post('/activity', esp32Controller.handleActivity)
 
 
 router.delete('/:id', async (req, res) => {

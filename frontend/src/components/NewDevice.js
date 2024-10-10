@@ -59,7 +59,7 @@ const NewDevice = () => {
                 />
             </Form.Group>
 
-            <Button variant="primary" type="submit">Salvar</Button>&nbsp;&nbsp;
+            <Button variant="primary" type="submit" onClick={handleSubmit}>Salvar</Button>&nbsp;&nbsp;
             <Button variant="secondary" type="button" onClick={() => window.location.reload()}>Cancelar</Button>
         </Form>
     );
