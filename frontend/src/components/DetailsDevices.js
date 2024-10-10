@@ -139,7 +139,7 @@ const DetailsDevices = () => {
     return (
       <Container>
         <Header>
-          <h1>Dispositivo não encontrado ou excluído</h1>
+          <h1>Dispositivo não encontrado</h1>
         </Header>
       </Container>
     );
@@ -193,7 +193,7 @@ const DetailsDevices = () => {
                 )}
                 {renderCard(
                   'Fluxo da água',
-                  measure.waterFlux,
+                  measure.waterFlux ? ' Não tem Fluxo' : 'Tem Fluxo',
                   flux,
                   'water flux icon'
                 )}
@@ -214,7 +214,7 @@ const DetailsDevices = () => {
                 )}
                 {renderCard(
                   'Status do motor',
-                  measure.engineStatus,
+                  measure.engineStatus ? 'Desligado' : 'Ligado',
                   motor,
                   'motor icon'
                 )}

@@ -14,7 +14,7 @@ const deviceSchema = new Schema({
     measures: [{
         temperature: {type: Number},
         waterTemperature: {type: Number},
-        waterFlux: {type: Number},
+        waterFlux: {type: Boolean},
         containerLevel: {type: Number},
         conductivity: {type: Number},
         humidity: {type: Number},
