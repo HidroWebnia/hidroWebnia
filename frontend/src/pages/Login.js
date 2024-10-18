@@ -146,7 +146,6 @@ const LoginPage = () => {
   return (
     <Container>
       <ImageSection>
-        {/* Adicione uma imagem ou qualquer outro conteúdo visual aqui */}
       </ImageSection>
       <FormSection>
         <LoginBox>
