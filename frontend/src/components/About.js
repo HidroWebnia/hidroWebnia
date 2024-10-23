@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import { AuthContext } from './AuthContext';
@@ -89,91 +88,55 @@ const StyleAbout = styled.div`
     }
   }
 
-  .card {
-    margin-top: 8px;
-  }
-
-  .text-action .h1 .p {
+  .benefits-title {
+    margin: 40px 0 20px;
     text-align: center;
-  }
-
-  .about-section {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    margin-top: 40px;
-  }
-
-  .about-section .image-wrapper {
-    flex: 1;
-    padding-right: 20px;
-  }
-
-  .about-section .image-wrapper img {
-    width: 100%;
-    border-radius: 7px;
-  }
-
-  .about-section .content {
-    flex: 1;
-    padding-left: 20px;
-    margin-top: 15px;
-  }
-
-  .about-section .content h2 {
+    font-size: 28px;
     color: #000;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    margin-top: 10px;
   }
 
-  .about-section .content p {
-    color: #555;
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-
-  .about-section .content a {
-    display: inline-block;
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
+  .benefits-subtitle {
     text-align: center;
-    border-radius: 5px;
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
-    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
   }
 
-  .about-section .content a:hover {
-    background-color: darkred;
-    margin-top: 10px;
-  }
-
-  .about-section .gallery {
+  .categories {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 18px;
   }
 
-  .about-section .gallery img {
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f9f9;
     border-radius: 5px;
-}
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    transition: transform 0.3s ease;
 
-.success {
-  margin-top: 10px;
-}
+    &:hover {
+      transform: scale(1.05);
+    }
 
+    .icon {
+      font-size: 50px; 
+    }
+
+    .title {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #000;
+    }
+  }
 `;
-
 
 const About = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -200,29 +163,45 @@ const About = () => {
           </>
         ) : null}
       </div>
-      <div className="about-section" data-aos="fade-up" data-aos-delay="300"> 
-        <div className="image-wrapper">
-          <img src="https://i.pinimg.com/564x/e7/84/40/e78440635911a9134f478f4dc6886c4e.jpg" alt="Suporte técnico" />
-        </div>
-        <div className="content">
-          <h2>Sobre Nós</h2>
-          <p>
-            No HidroWebnia, estamos mudando a forma como cultivamos alimentos.
-            Usamos tecnologia de hidroponia para tornar o cultivo mais sustentável e acessível.
-             Nossa equipe é formada por especialistas em agricultura e tecnologia, que trabalham 
-             para oferecer soluções simples e eficientes para todos.
-            Queremos ajudar você a cultivar plantas saudáveis, seja em casa 
-            ou em grandes estufas. Acreditamos que o conhecimento deve ser compartilhado. Por isso, oferecemos suporte técnico
-            e recursos educativos para que todos possam aprender e crescer conosco. 
-            Junte-se a nós e descubra como a hidroponia pode transformar sua maneira de cultivar!
-          </p>
-         
 
-          <div style={{ marginTop: '20px' }}>
-            <Button variant="success">
-              Saiba Mais
-            </Button>
-          </div>
+      <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
+      <h3 className="benefits-subtitle">Maximizando a eficiência e produtividade da sua produção hidropônica.</h3>
+
+      <div className="categories" data-aos="fade-up" data-aos-delay="200">
+        <div className="category">
+          <div className="icon">🌱</div>
+          <div className="title">Cultivo Sustentável</div>
+        </div>
+        <div className="category">
+          <div className="icon">💧</div>
+          <div className="title">Economia de Água</div>
+        </div>
+        <div className="category">
+          <div className="icon">📊</div>
+          <div className="title">Monitoramento em Tempo Real</div>
+        </div>
+        <div className="category">
+          <div className="icon">📅</div>
+          <div className="title">Automação de Rotinas</div>
+        </div>
+      </div>
+
+      <div className="categories" data-aos="fade-up" data-aos-delay="200">
+        <div className="category">
+          <div className="icon">🔒</div>
+          <div className="title">Segurança de Dados</div>
+        </div>
+        <div className="category">
+          <div className="icon">🌍</div>
+          <div className="title">Sustentabilidade Ambiental</div>
+        </div>
+        <div className="category">
+          <div className="icon">🚀</div>
+          <div className="title">Acesso a Tecnologias Avançadas</div>
+        </div>
+        <div className="category">
+          <div className="icon">📈</div>
+          <div className="title">Melhoria da Qualidade do Produto</div>
         </div>
       </div>
     </StyleAbout>

@@ -17,24 +17,19 @@ const StyleTime = styled.div`
   @media (max-width: 480px) {
     padding: 24px;
   }
+  
   h1 {
     color: #181818;
     font-size: 24px;
     text-align: center;
   }
+
   .members {
     display: flex;
-    flex-direction: row;
-    gap: 12px;
+    justify-content: space-between;
     margin-top: 36px;
-
-    @media (max-width: 480px) {
-      flex-direction: column;
-    }
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
-    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 20px; /* Aumentei o espaço entre os cards */
   }
 
   hr {
@@ -42,37 +37,55 @@ const StyleTime = styled.div`
     height: 2px;
     width: 50px;
     background-color: purple;
-    margin: 10px auto 10px auto;
+    margin: 10px auto;
   }
 
   .card {
     display: flex;
     flex-direction: column;
-    border: solid 2px;
-    border-color: #e0e0e0;
-    background-color: #ededed;
-    transition: transform 0.3s ease;
+    align-items: center;
+    border: solid 2px #e0e0e0;
+    background-color: #f8f8f8; /* Alterei a cor de fundo para um tom mais suave */
+    border-radius: 10px; /* Bordas arredondadas para um visual mais suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adicionei transição para box-shadow */
+    width: 18%; /* Ajusta a largura dos cards para caber 5 na linha */
+    box-sizing: border-box;
 
     &:hover {
       transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Efeito de sombra ao passar o mouse */
+    }
+
+    @media (max-width: 768px) {
+      width: 30%;
     }
 
     @media (max-width: 480px) {
-      width: 70%;
+      width: 80%;
     }
   }
 
+  .card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease; /* Adicionei transição para a imagem */
+  }
+
+  .card img:hover {
+    transform: scale(1.1); /* Efeito de zoom na imagem ao passar o mouse */
+  }
+
   .card p {
-    padding: 18px 0 0 18px;
     color: #181818;
   }
 
   .card-time {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 18px 0 18px;
   }
 
   .card-time p {
@@ -80,6 +93,7 @@ const StyleTime = styled.div`
     padding: 6px 12px;
     border-radius: 8px;
     font-size: 12px;
+    margin-bottom: 6px;
   }
 
   .links {
@@ -158,7 +172,7 @@ const Time = () => {
               </div>
             </div>
           </div>
-
+          
           <div className="card">
             <img src={galindo} alt="Lucas Galindo" />
             <p>Lucas Galindo</p>
