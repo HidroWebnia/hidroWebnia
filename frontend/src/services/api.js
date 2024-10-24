@@ -4,7 +4,19 @@ const api = axios.create({
     baseURL: 'https://devicesserver.onrender.com/api/'
 })
 
+
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token')
+    if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`
+    }
+    return config
+}, (error) => {
+    return Promise.reject(error)
+})
+
 export default api
+
 
 export const deleteRegister = (id) => {
     return api.delete(`devices/${id}`)
@@ -14,6 +26,7 @@ export const deleteRegister = (id) => {
         })
         .catch(err => console.log(err))
 }
+
 
 export const editRegister = (id, { name, description, image }) => {
     const formData = new FormData()
@@ -35,7 +48,8 @@ export const editRegister = (id, { name, description, image }) => {
     .catch(err => console.log(err))
 }
 
-export const addRegister = ({name, description, email, image}) => {
+
+export const addRegister = ({ name, description, email, image }) => {
     const formData = new FormData()
     formData.append('name', name)
     formData.append('description', description)
@@ -73,53 +87,56 @@ export const login = ({ email, password }) => {
         })
 }
 
-export const register = ({username, email, password, confirmPassword}) => {
-    return api.post('auth/register', {username, email, password, confirmPassword})
-    .then(response => {
-        if (response.status === 201){
-            return response
-        }
-    })
-    .catch(err => {
-        console.error(err)
-        if (err.response && err.response.data) {
-            throw new Error(err.response.data.msg || 'Erro ao registrar.')
-        } else {
-            throw new Error('Erro no servidor, tente novamente mais tarde!')
-        }
-    })
+
+export const register = ({ username, email, password, confirmPassword }) => {
+    return api.post('auth/register', { username, email, password, confirmPassword })
+        .then(response => {
+            if (response.status === 201) {
+                return response
+            }
+        })
+        .catch(err => {
+            console.error(err)
+            if (err.response && err.response.data) {
+                throw new Error(err.response.data.msg || 'Erro ao registrar.')
+            } else {
+                throw new Error('Erro no servidor, tente novamente mais tarde!')
+            }
+        })
 }
+
 
 export const resetPassword = (email) => {
     return api.post('auth/reset-password', { email })
-      .then(response => {
-        if (response.status === 200) {
-          return response
-        }
-      })
-      .catch(err => {
-        console.error(err)
-        if (err.response && err.response.data) {
-          throw new Error(err.response.data.msg || 'Erro ao enviar email de redefinição de senha.')
-        } else {
-          throw new Error('Erro no servidor, tente novamente mais tarde!')
-        }
-      })
-  }
+        .then(response => {
+            if (response.status === 200) {
+                return response
+            }
+        })
+        .catch(err => {
+            console.error(err)
+            if (err.response && err.response.data) {
+                throw new Error(err.response.data.msg || 'Erro ao enviar email de redefinição de senha.')
+            } else {
+                throw new Error('Erro no servidor, tente novamente mais tarde!')
+            }
+        })
+}
+
 
 export const newPassword = (token, { password, confirmPassword }) => {
-    return api.post(`auth/reset-password/${token}`, {password, confirmPassword})
-    .then(response => {
-        if(response.status === 200){
-            return response
-        }
-    })
-    .catch(err => {
-        console.error(err)
-        if (err.response && err.response.data) {
-            throw new Error(err.response.data.msg || 'Erro ao enviar email de redefinição de senha.')
-        } else {
-            throw new Error('Erro no servidor, tente novamente mais tarde!')
-        }
-    })
+    return api.post(`auth/reset-password/${token}`, { password, confirmPassword })
+        .then(response => {
+            if (response.status === 200) {
+                return response
+            }
+        })
+        .catch(err => {
+            console.error(err)
+            if (err.response && err.response.data) {
+                throw new Error(err.response.data.msg || 'Erro ao redefinir senha.')
+            } else {
+                throw new Error('Erro no servidor, tente novamente mais tarde!')
+            }
+        })
 }

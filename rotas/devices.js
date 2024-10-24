@@ -2,26 +2,27 @@ const router = require('express').Router()
 const upload = require('../config/multer')
 const Devices = require('../model/Devices')
 const esp32Controller = require('../controllers/esp32Controller')
+const { authMiddleware } = require('../middlewares/authMiddleware')
 
-router.get('/', async (req, res) =>{
+router.get('/', authMiddleware, async (req, res) =>{
     try {
-        const devices = await Devices.find()
+        const devices = await Devices.find({ user: req.user.id })
         res.json(devices)
     } catch(err) {
         res.status(500).send(err)
     }
 })
 
-router.get('/detalhes/:id', async (req, res) =>{
+router.get('/detalhes/:id', authMiddleware, async (req, res) =>{
     try {
-        const device = await Devices.findById(req.params.id)
+        const device = await Devices.findOne({ _id: req.params.id, user: req.user.id })
         res.json(device)
     } catch(err) {
         res.status(500).send(err)
     }
 })
 
-router.patch('/:id', upload.single('image'), async (req, res) => {
+router.patch('/:id', authMiddleware, upload.single('image'), async (req, res) => {
     try {
         const updateData = {
             name: req.body.name,
@@ -32,7 +33,7 @@ router.patch('/:id', upload.single('image'), async (req, res) => {
             updateData.image = req.file.path
         }
 
-        const updatedDevice = await Devices.findByIdAndUpdate(req.params.id, updateData, { new: true })
+        const updatedDevice = await Devices.findOneAndUpdate({ _id: req.params.id, user: req.user.id }, updateData, { new: true })
 
         if (!updatedDevice) {
             return res.status(404).json({ success: false, message: 'Device não encontrado' })
@@ -47,13 +48,14 @@ router.patch('/:id', upload.single('image'), async (req, res) => {
     }
 })
 
-router.post('/', upload.single('image'), async (req, res) =>{
+router.post('/', authMiddleware, upload.single('image'), async (req, res) =>{
     try {
         const device = new Devices({
             name: req.body.name,
             description: req.body.description,
             email: req.body.email,
-            image: req.file.path
+            image: req.file.path,
+            user: req.user.id
         })
         await device.save()
         res.json(device)
@@ -65,9 +67,9 @@ router.post('/', upload.single('image'), async (req, res) =>{
 router.post('/activity', esp32Controller.handleActivity)
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware, async (req, res) => {
     try {
-        const device = await Devices.findByIdAndDelete(req.params.id)
+        const device = await Devices.findOneAndDelete({ _id: req.params.id, user: req.user.id })
         res.json(device)
     } catch(err) {
         res.status(500).send(err)

@@ -11,6 +11,7 @@ const deviceSchema = new Schema({
     espStatus: {type: Boolean, required: true, default: false},
     lastRequestTime: { type: Date },
     slug: {type: String, required: true, unique: true, default: function(){ return slug(this.name)}},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     measures: [{
         temperature: {type: Number},
         waterTemperature: {type: Number},

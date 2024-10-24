@@ -5,6 +5,7 @@ const crypto = require('crypto')
 const User = require('../model/User')
 const router = express.Router()
 const createTransporter = require('../nodemail')
+const { authMiddleware, blacklist } = require('../middlewares/authMiddleware')
 
 router.post('/register', async (req, res) => {
 
@@ -111,34 +112,8 @@ router.post('/login', async (req, res) => {
 
 })
 
-let blacklist = []
-
-const authMiddleware = (req, res, next) => {
-
-    const token = req.header('Authorization')?.replace('Bearer ', '')
-
-    if (!token) {
-        return res.status(401).json({ msg: 'Acesso negado!' })
-    }
-
-    if (blacklist.includes(token)) {
-        return res.status(401).json({ msg: 'Token inválido!' })
-    }
-
-    try {
-        const decoded = jwt.verify(token, process.env.SECRET)
-        req.user = decoded
-        next()
-    } catch (err) {
-        res.status(401).json({ msg: 'Token inválido!' })
-    }
-
-}
-
 router.post('/logout', authMiddleware, (req, res) => {
-
-    const token = req.header('Authorization')?.replace('Bearer ', '')
-
+    
     if (token) {
         blacklist.push(token)
     }
