@@ -50,13 +50,18 @@ router.patch('/:id', authMiddleware, upload.single('image'), async (req, res) =>
 
 router.post('/', authMiddleware, upload.single('image'), async (req, res) =>{
     try {
-        const device = new Devices({
+        const deviceData = {
             name: req.body.name,
             description: req.body.description,
             email: req.body.email,
-            image: req.file.path,
             user: req.user.id
-        })
+        }
+
+        if (req.file) {
+            deviceData.image = req.file.path
+        }
+
+        const device = new Devices(deviceData)
         await device.save()
         res.json(device)
     } catch(err) {

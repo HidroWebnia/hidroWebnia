@@ -54,7 +54,10 @@ export const addRegister = ({ name, description, email, image }) => {
     formData.append('name', name)
     formData.append('description', description)
     formData.append('email', email)
-    formData.append('image', image)
+    
+    if (image) {
+        formData.append('image', image)
+    }
 
     return api.post('devices', formData, {
         headers: {

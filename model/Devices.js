@@ -6,7 +6,7 @@ const deviceSchema = new Schema({
     name: { type: String, required: true, unique: true},
     description: {type: String, required: true},
     email: {type: String, required: true},
-    image: {type: String, required: true},
+    image: {type: String},
     registrationDate: {type: Date, required: true, default: Date.now },
     espStatus: {type: Boolean, required: true, default: false},
     lastRequestTime: { type: Date },
