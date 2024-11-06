@@ -10,6 +10,7 @@ const AdminStyle = styled.div`
     padding: 3rem;
     text-align: center;
     color: #26503c;
+    margin-top: 20px;
   }
 `;
 

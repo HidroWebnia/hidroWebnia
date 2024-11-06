@@ -24,7 +24,7 @@ const deviceSchema = new Schema({
         uv: {type: Number},
         hour: {type: String},
         day: {type: String},
-        onlineTime: {type: Number},
+        onlineTime: {type: String},
         engineStatus: {type: Boolean}
     }]
 

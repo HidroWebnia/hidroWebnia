@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const upload = require('../config/multer')
 const Devices = require('../model/Devices')
-const esp32Controller = require('../controllers/esp32Controller')
+const esp32Timer = require('../utils/time')
 const { authMiddleware } = require('../middlewares/authMiddleware')
 
 router.get('/', authMiddleware, async (req, res) =>{
@@ -69,9 +69,6 @@ router.post('/', authMiddleware, upload.single('image'), async (req, res) =>{
     }
 })
 
-router.post('/activity', esp32Controller.handleActivity)
-
-
 router.delete('/:id', authMiddleware, async (req, res) => {
     try {
         const device = await Devices.findOneAndDelete({ _id: req.params.id, user: req.user.id })
@@ -81,11 +78,38 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', authMiddleware, async (req, res) => {
     try {
-        const device = await Devices.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        
+        esp32Timer.start()
+
+        const onlineTime = esp32Timer.getElapsedTime()
+
+        const updateData = {
+            ...req.body,  
+            measures: req.body.measures ? req.body.measures : [] 
+        }
+
+        if (updateData.measures.length > 0) {
+            updateData.measures[0].onlineTime = onlineTime;
+        } else {
+            updateData.measures.push({
+                onlineTime: onlineTime,
+            })
+        }
+
+        const device = await Devices.findByIdAndUpdate(req.params.id,{ ...req.body, onlineTime }, { new: true })
+
+        if (!device) {
+            return res.status(404).json({ success: false, message: 'Device não encontrado' })
+        }
+
+        esp32Timer.resetInactiveTime(() => {
+            esp32Timer.stop()
+        })
+
         res.json(device)
-    } catch(err) {
+    } catch (err) {
         res.status(500).send(err)
     }
 })

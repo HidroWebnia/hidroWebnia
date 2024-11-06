@@ -5,11 +5,11 @@ class Timer {
         this.timerActive = false
         this.inactiveTimeout = null
         this.timeoutDuration = timeoutDuration
-        this.elapsedTime = 0
+        this.elapsedTime = 0 
     }
 
     start() {
-        if(!this.timerActive){
+        if (!this.timerActive) {
             this.startTime = new Date()
             this.timerActive = true
             console.log("Cronômetro iniciado.")
@@ -17,20 +17,29 @@ class Timer {
     }
 
     stop() {
-        if(this.timerActive){
+        if (this.timerActive) {
             this.endTime = new Date()
-            this.elapsedTime += (this.endTime - this.startTime) / 1000;
+            this.elapsedTime += (this.endTime - this.startTime) / 1000
             this.timerActive = false
             console.log(`Cronômetro parado. Tempo ativo: ${this.formatTime(this.elapsedTime)}`)
-            return this.elapsedTime
+            this.elapsedTime = 0
+            return this.formatTime(this.elapsedTime)
         }
-        return this.elapsedTime
+        return this.formatTime(this.elapsedTime)
+    }
+
+    getElapsedTime() {
+        if (this.timerActive) {
+            const now = new Date()
+            const elapsed = this.elapsedTime + (now - this.startTime) / 1000
+            return this.formatTime(elapsed)
+        }
+        return this.formatTime(this.elapsedTime)
     }
 
     resetInactiveTime(callback) {
-        
         if (this.inactiveTimeout) {
-            clearTimeout(this.inactiveTimeout);
+            clearTimeout(this.inactiveTimeout)
         }
 
         this.inactiveTimeout = setTimeout(() => {
@@ -47,8 +56,8 @@ class Timer {
     }
 
     padTime(time) {
-        return time < 10 ? `0${time}` : time;
+        return time < 10 ? `0${time}` : time
     }
 }
 
-module.exports = Timer
+module.exports = new Timer(60000)
