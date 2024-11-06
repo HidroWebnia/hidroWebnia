@@ -8,6 +8,7 @@ import wesney from '../assets/wesney.svg';
 import renato from '../assets/renato.svg';
 import galindo from '../assets/galindo.png';
 
+
 const StyleTime = styled.div`
   padding: 96px;
   @media (max-width: 768px) {
@@ -17,7 +18,7 @@ const StyleTime = styled.div`
   @media (max-width: 480px) {
     padding: 24px;
   }
-  
+
   h1 {
     color: #181818;
     font-size: 24px;
@@ -29,7 +30,9 @@ const StyleTime = styled.div`
     justify-content: space-between;
     margin-top: 36px;
     flex-wrap: wrap;
-    gap: 20px; /* Aumentei o espaço entre os cards */
+    gap: 20px; 
+    justify-content: center;  
+
   }
 
   hr {
@@ -45,23 +48,26 @@ const StyleTime = styled.div`
     flex-direction: column;
     align-items: center;
     border: solid 2px #e0e0e0;
-    background-color: #f8f8f8; /* Alterei a cor de fundo para um tom mais suave */
-    border-radius: 10px; /* Bordas arredondadas para um visual mais suave */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adicionei transição para box-shadow */
-    width: 18%; /* Ajusta a largura dos cards para caber 5 na linha */
+    background-color: #f8f8f8; 
+    border-radius: 10px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    width: 18%; 
     box-sizing: border-box;
+    margin-bottom: 20px; 
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Efeito de sombra ao passar o mouse */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
     }
 
     @media (max-width: 768px) {
       width: 30%;
+      align-items: center;
     }
 
     @media (max-width: 480px) {
       width: 80%;
+      align-items: center;
     }
   }
 
@@ -71,11 +77,11 @@ const StyleTime = styled.div`
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-    transition: transform 0.3s ease; /* Adicionei transição para a imagem */
+    transition: transform 0.3s ease; 
   }
 
   .card img:hover {
-    transform: scale(1.1); /* Efeito de zoom na imagem ao passar o mouse */
+    transform: scale(1.1); 
   }
 
   .card p {
@@ -112,6 +118,7 @@ const StyleTime = styled.div`
     transform: scale(1.2);
   }
 `;
+
 
 const Time = () => {
   return (

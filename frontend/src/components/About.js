@@ -10,6 +10,7 @@ const StyleAbout = styled.div`
     background-size: cover;
     background-position: center;
     padding: 96px;
+    color: #fff;
 
     @media (max-width: 768px) {
       padding: 48px;
@@ -141,101 +142,79 @@ const StyleAbout = styled.div`
 `;
 
 const BannerContainer = styled.div`
-  //background: url('https://img.freepik.com/fotos-gratis/jardineiro-agronomo-segurando-salada-fresca-organica-saudavel-mostrando-ao-empresario-agricola-discutindo-nutricao-de-vegetais-na-plantacao-de-estufa-hidroponica-conceito-de-agricultura_482257-38029.jpg?t=st=1730813124~exp=1730816724~hmac=8e5a35595d217f5c53df843c513b49102c336544365dd3aac56f779b373615b7&w=996') no-repeat center center/cover;
-  height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-`;
-
-const Overlay = styled.div`
-  background-color: #000000;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Content = styled.div`
-  display: flex;
-  width: 80%;
-  max-width: 1200px;
   justify-content: space-between;
-  color: #fff;
+  padding: 40px;
+  background-color: #e8f5e9; 
 `;
 
-const LeftSection = styled.div`
-  flex: 1;
-  padding-right: 20px;
+const TextSection = styled.div`
+  width: 50%;
+  color: #2e7d32; 
+  font-family: Arial, sans-serif;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .highlight {
+    font-weight: bold;
+    color: #388e3c; 
+  }
 `;
 
-const Heading = styled.h1`
-  font-size: 24px;
-  color: #ffffff;
-  margin-bottom: 10px;
-  text-align: left;
-`;
-
-const Subheading = styled.h2`
-  font-size: 18px;
-  font-weight: normal;
-  color: #ffffff;
-  margin-bottom: 20px;
-`;
-
-const Description = styled.p`
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #ffffff;
-
-`;
-
-const Disclaimer = styled.p`
-  font-size: 12px;
-  opacity: 0.8;
-  color: #ffffff;
-
-`;
-
-const FormSection = styled.div`
-  background-color: #2e8b57;
+const FormContainer = styled.div`
+  width: 40%;
   padding: 20px;
+  background-color: #a5d6a7; 
   border-radius: 8px;
-  width: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const FormHeading = styled.h3`
-  font-size: 18px;
+const FormHeading = styled.h2`
+  text-align: center;
+  color: #1b5e20; 
+  font-size: 1.2rem;
   margin-bottom: 20px;
+
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 15px;
 `;
 
 const Input = styled.input`
   padding: 10px;
-  margin-bottom: 10px;
-  border: none;
+  font-size: 1rem;
+  border: 1px solid #66bb6a;
   border-radius: 4px;
-  font-size: 14px;
 `;
 
 const Button = styled.button`
-  background-color: #000000;
-  color: #ffffff;
-  padding: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #2e7d32;
   border: none;
   border-radius: 4px;
-  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #2e8b57;
+    background-color: #1b5e20;
   }
 `;
 
@@ -263,33 +242,35 @@ const About = () => {
         ) : null}
       </div>
 
-      <BannerContainer>
-        <Overlay>
-          <Content>
-            <LeftSection>
-            <Heading>Fique à frente com o HIDROWEBNIA</Heading>
-              <Subheading>
-                Descubra a tecnologia que vai revolucionar o monitoramento de sua produção hidropônica
-              </Subheading>
-              <Description>
-                Estamos empolgados em compartilhar com você o HIDROWEBNIA, uma solução inovadora para monitoramento de sistemas hidropônicos. Seja um dos primeiros a explorar essa ferramenta e veja como ela pode otimizar o uso de recursos e melhorar a produtividade de sua produção. Preencha o formulário ao lado para garantir acesso exclusivo às informações.
-              </Description>
-              <Disclaimer>
-                Fique atento ao seu e-mail! Em breve, enviaremos todos os detalhes e datas de lançamento. Não perca essa oportunidade de transformar sua produção!
-              </Disclaimer>
-            </LeftSection>
-            <FormSection>
-              <FormHeading>Preencha o formulário</FormHeading>
-              <Form>
-                <Input type="text" placeholder="Nome*" />
-                <Input type="email" placeholder="Email*" />
-                <Input type="number" placeholder="Idade*" />
-                <Input type="text" placeholder="Cargo*" />
-                <Button>Quero ser o primeiro!</Button>
-              </Form>
-            </FormSection>
-          </Content>
-        </Overlay>
+      <BannerContainer data-aos="fade-up" data-aos-delay="200">
+        <TextSection>
+          <h1>Transforme sua produção hidropônica com um monitoramento avançado.</h1>
+          <p>
+            Na HidroWebnia, entendemos que a eficiência e a produtividade de um sistema hidropônico
+            dependem de um monitoramento contínuo e preciso. Sem uma supervisão adequada, sua produção
+            pode estar perdendo potenciais ganhos, comprometendo o crescimento das suas plantas e a rentabilidade do seu negócio.
+          </p>
+
+          <p>
+          Nossa equipe especializada está pronta para garantir que seu sistema esteja operando de maneira ideal, maximizando resultados e minimizando falhas.
+          Ao confiar no monitoramento especializado da HidroWebnia, você garante um acompanhamento constante e insights valiosos para otimizar cada aspecto do seu cultivo.
+          </p>
+          <p className="highlight">
+          Preencha os dados ao lado e agende seu monitoramento personalizado.
+          Estamos aqui para ajudar você a alcançar o máximo desempenho de sua produção hidropônica, com a qualidade e a expertise que só a HidroWebnia oferece.
+          </p>
+        </TextSection>
+
+        <FormContainer>
+          <FormHeading>Agendar Monitoramento</FormHeading>
+          <Form>
+            <Input type="text" placeholder="Nome e Sobrenome" />
+            <Input type="text" placeholder="Telefone" />
+            <Input type="email" placeholder="Email" />
+            <Input type="text" placeholder="Endereço" />
+            <Button>Agendar Monitoramento</Button>
+          </Form>
+        </FormContainer>
       </BannerContainer>
 
       <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
@@ -337,3 +318,5 @@ const About = () => {
 };
 
 export default About;
+
+

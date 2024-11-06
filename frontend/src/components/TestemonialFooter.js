@@ -7,7 +7,8 @@ const Container = styled.div`
   padding: 25px;
   width: 80%;
   margin: 0 auto;
-  margin-top: -55px; 
+  margin-top: 35px;
+  flex-wrap: wrap;  
 `;
 
 const Testemunho = styled.div`
@@ -19,11 +20,20 @@ const Testemunho = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 30%;
+  margin-bottom: 20px; 
   transition: transform 0.3s ease;
 
-    &:hover {
-      transform: scale(1.05);
-    }
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1024px) {
+    width: 45%;  
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;  
+  }
 `;
 
 const Foto = styled.img`
@@ -65,7 +75,7 @@ const TestemunhoComponent = () => {
         </Descricao>
       </Testemunho>
       <Testemunho>
-        <Foto src="https://img.freepik.com/fotos-gratis/jovem-homem-posando-isolado-contra-a-parede-em-branco-do-estudio_273609-12356.jpg?t=st=1728478422~exp=1728482022~hmac=b98eda948ab14f44639a15a639be4e6d7221e53de4af6f9e5224010a2bed66c6&w=900 " alt="Foto do cliente" />
+        <Foto src="https://img.freepik.com/fotos-gratis/jovem-homem-posando-isolado-contra-a-parede-em-branco-do-estudio_273609-12356.jpg?t=st=1728478422~exp=1728482022~hmac=b98eda948ab14f44639a15a639be4e6d7221e53de4af6f9e5224010a2bed66c6&w=900" alt="Foto do cliente" />
         <Nome>Pedro Oliveira</Nome>
         <Descricao>
           "O serviço foi rápido e eficiente.
