@@ -27,12 +27,14 @@ const StyleTime = styled.div`
 
   .members {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 36px;
-    flex-wrap: wrap;
-    gap: 20px; 
-    justify-content: center;  
+    flex-wrap: nowrap; /* Evita quebra de linha */
+    gap: 20px;
 
+    @media (max-width: 992px) {
+      flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+    }
   }
 
   hr {
@@ -51,23 +53,25 @@ const StyleTime = styled.div`
     background-color: #f8f8f8; 
     border-radius: 10px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    width: 18%; 
+    width: 18%; /* Ajuste para garantir cinco cards na linha */
     box-sizing: border-box;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 992px) {
+      width: 30%;
     }
 
     @media (max-width: 768px) {
-      width: 30%;
-      align-items: center;
+      width: 45%;
     }
 
     @media (max-width: 480px) {
       width: 80%;
-      align-items: center;
     }
   }
 
@@ -81,7 +85,7 @@ const StyleTime = styled.div`
   }
 
   .card img:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
   }
 
   .card p {
@@ -118,6 +122,7 @@ const StyleTime = styled.div`
     transform: scale(1.2);
   }
 `;
+
 
 
 const Time = () => {
