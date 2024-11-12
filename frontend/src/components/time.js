@@ -11,6 +11,7 @@ import galindo from '../assets/galindo.png';
 
 const StyleTime = styled.div`
   padding: 96px;
+  margin-top: 40px;
   @media (max-width: 768px) {
     padding: 48px;
   }
@@ -29,11 +30,11 @@ const StyleTime = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 36px;
-    flex-wrap: nowrap; /* Evita quebra de linha */
+    flex-wrap: nowrap; 
     gap: 20px;
 
     @media (max-width: 992px) {
-      flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+      flex-wrap: wrap; 
     }
   }
 
@@ -53,7 +54,7 @@ const StyleTime = styled.div`
     background-color: #f8f8f8; 
     border-radius: 10px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    width: 18%; /* Ajuste para garantir cinco cards na linha */
+    width: 18%; 
     box-sizing: border-box;
     margin-bottom: 20px;
 
@@ -82,6 +83,7 @@ const StyleTime = styled.div`
     object-fit: cover;
     margin-bottom: 12px;
     transition: transform 0.3s ease; 
+    margin-top: 7px;
   }
 
   .card img:hover {

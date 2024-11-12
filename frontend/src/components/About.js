@@ -309,7 +309,7 @@ const About = () => {
           <div className="title">Acesso a Tecnologias Avançadas</div>
         </div>
         <div className="category">
-          <div className="icon">📈</div>
+          <div className="icon">🛠️</div>
           <div className="title">Melhoria da Qualidade do Produto</div>
         </div>
       </div>
