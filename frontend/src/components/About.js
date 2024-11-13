@@ -131,7 +131,7 @@ const StyleAbout = styled.div`
     }
 
     .icon {
-      font-size: 50px; 
+      font-size: 50px;
     }
 
     .title {
@@ -147,12 +147,18 @@ const BannerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 40px;
-  background-color: #e8f5e9; 
+  background-color: #e8f5e9;
+
+  /* Ajuste para telas menores */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 20px;
+  }
 `;
 
 const TextSection = styled.div`
   width: 50%;
-  color: #2e7d32; 
+  color: #2e7d32;
   font-family: Arial, sans-serif;
 
   h1 {
@@ -171,47 +177,69 @@ const TextSection = styled.div`
 
   .highlight {
     font-weight: bold;
-    color: #388e3c; 
+    color: #388e3c;
+  }
+
+  /* Ajuste para telas menores */
+  @media (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
 const FormContainer = styled.div`
   width: 40%;
   padding: 20px;
-  background-color: #a5d6a7; 
+  background-color: #a5d6a7;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Ajuste para telas menores */
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 20px;
+  }
 `;
 
 const FormHeading = styled.h2`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2e7d32;
   text-align: center;
-  color: #1b5e20; 
-  font-size: 1.2rem;
   margin-bottom: 20px;
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
 `;
 
 const Input = styled.input`
+  margin-bottom: 10px;
   padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #66bb6a;
+  border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 1rem;
 `;
 
 const Button = styled.button`
-  padding: 12px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #2e7d32;
+  padding: 10px;
   border: none;
-  border-radius: 4px;
+  background-color: #2e8b57;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #1b5e20;
@@ -286,101 +314,54 @@ const About = () => {
             dependem de um monitoramento contínuo e preciso. Sem uma supervisão adequada, sua produção
             pode estar perdendo potenciais ganhos, comprometendo o crescimento das suas plantas e a rentabilidade do seu negócio.
           </p>
-
           <p>
-          Nossa equipe especializada está pronta para garantir que seu sistema esteja operando de maneira ideal, maximizando resultados e minimizando falhas.
-          Ao confiar no monitoramento especializado da HidroWebnia, você garante um acompanhamento constante e insights valiosos para otimizar cada aspecto do seu cultivo.
+            Nossa equipe especializada está pronta para garantir que seu sistema esteja operando de maneira ideal, maximizando resultados e minimizando falhas.
+            Ao confiar no monitoramento especializado da HidroWebnia, você garante um acompanhamento constante e insights valiosos para otimizar cada aspecto do seu cultivo.
           </p>
           <p className="highlight">
-          Preencha os dados ao lado e agende seu monitoramento personalizado.
-          Estamos aqui para ajudar você a alcançar o máximo desempenho de sua produção hidropônica, com a qualidade e a expertise que só a HidroWebnia oferece.
+            Preencha os dados ao lado e agende seu monitoramento personalizado.
+            Estamos aqui para ajudar você a alcançar o máximo desempenho de sua produção hidropônica, com a qualidade e a expertise que só a HidroWebnia oferece.
           </p>
         </TextSection>
-
         <FormContainer>
-          <FormHeading>Agendar Monitoramento</FormHeading>
+          <FormHeading>Agende seu monitoramento</FormHeading>
           <Form onSubmit={handleSubmit}>
-            <Input 
-              type="text" 
-              name="name" 
-              value={formData.name} 
-              onChange={handleChange} 
-              placeholder="Nome e Sobrenome" 
-              required 
+            <Input
+              type="text"
+              placeholder="Nome"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
             />
-            <Input 
-              type="text" 
-              name="phone" 
-              value={formData.phone} 
-              onChange={handleChange} 
-              placeholder="Telefone" 
-              required 
+            <Input
+              type="text"
+              placeholder="Telefone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
             />
-            <Input 
-              type="email" 
-              name="emailSchedule" 
-              value={formData.emailSchedule} 
-              onChange={handleChange} 
-              placeholder="Email" 
-              required 
+            <Input
+              type="email"
+              placeholder="Email"
+              name="emailSchedule"
+              value={formData.emailSchedule}
+              onChange={handleChange}
             />
-            <Input 
-              type="text" 
-              name="address" 
-              value={formData.address} 
-              onChange={handleChange} 
-              placeholder="Endereço" 
-              required 
+            <Input
+              type="text"
+              placeholder="Endereço"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
             />
-            {message && <p>{message}</p>}
-            {error && <p>{error}</p>}
             <Button type="submit" disabled={loading}>
-              {loading ? 'Carregando...' : 'Agendar Monitoramento'}
+              {loading ? 'Aguarde...' : 'Agendar'}
             </Button>
           </Form>
+          {message && <p style={{ color: 'green' }}>{message}</p>}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </FormContainer>
       </BannerContainer>
-
-      <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
-      <h3 className="benefits-subtitle">Maximizando a eficiência e produtividade da sua produção hidropônica.</h3>
-
-      <div className="categories" data-aos="fade-up" data-aos-delay="200">
-        <div className="category">
-          <div className="icon">🌱</div>
-          <div className="title">Cultivo Sustentável</div>
-        </div>
-        <div className="category">
-          <div className="icon">💧</div>
-          <div className="title">Economia de Água</div>
-        </div>
-        <div className="category">
-          <div className="icon">📊</div>
-          <div className="title">Monitoramento em Tempo Real</div>
-        </div>
-        <div className="category">
-          <div className="icon">📈</div>
-          <div className="title">Otimização da Produção</div>
-        </div>
-      </div>
-
-      <div className="categories" data-aos="fade-up" data-aos-delay="200">
-        <div className="category">
-          <div className="icon">🔒</div>
-          <div className="title">Segurança de Dados</div>
-        </div>
-        <div className="category">
-          <div className="icon">🌍</div>
-          <div className="title">Sustentabilidade Ambiental</div>
-        </div>
-        <div className="category">
-          <div className="icon">🚀</div>
-          <div className="title">Acesso a Tecnologias Avançadas</div>
-        </div>
-        <div className="category">
-          <div className="icon">🛠️</div>
-          <div className="title">Melhoria da Qualidade do Produto</div>
-        </div>
-      </div>
     </StyleAbout>
   );
 };

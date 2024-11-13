@@ -7,6 +7,12 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const Container = styled.div`
   display: flex;
   height: 100vh;
+  flex-direction: row;
+  align-items: stretch;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ImageSection = styled.div`
@@ -16,6 +22,11 @@ const ImageSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh; /* Ocupa toda a altura da tela */
+
+  @media (max-width: 768px) {
+    height: 50vh; /* Ajusta a altura no mobile */
+  }
 `;
 
 const FormSection = styled.div`
@@ -26,6 +37,11 @@ const FormSection = styled.div`
   align-items: center;
   background-color: #f5f5f5;
   padding: 20px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 15px;
+  }
 `;
 
 const LoginBox = styled.div`
@@ -36,6 +52,11 @@ const LoginBox = styled.div`
   width: 100%;
   max-width: 400px;
   position: relative;
+
+  @media (max-width: 480px) {
+    max-width: 90%;
+    padding: 30px;
+  }
 `;
 
 const Title = styled.h2`
@@ -145,8 +166,7 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <ImageSection>
-      </ImageSection>
+      <ImageSection />
       <FormSection>
         <LoginBox>
           <Title>Login</Title>

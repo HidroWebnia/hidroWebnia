@@ -7,37 +7,70 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const Container = styled.div`
   display: flex;
   height: 100vh;
+  flex-direction: row;
+  align-items: stretch; 
+
+  @media (max-width: 768px) {
+    flex-direction: column; 
+  }
 `;
 
 const ImageSection = styled.div`
-  flex: 1;
+  flex: 1; 
   background: url('https://img.freepik.com/fotos-premium/vista-de-plantas-em-vaso-em-estufa_1048944-1314777.jpg?w=740') no-repeat center center;
-  background-size: cover;
+  background-size: cover; 
+  background-position: center center; 
+  height: 100vh; 
+
+  @media (max-width: 768px) {
+    height: 50vh; 
+  }
 `;
 
 const FormSection = styled.div`
-  flex: 1;
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: rgba(245, 245, 245, 0.9); 
   padding: 20px;
+  position: relative;
+  z-index: 1;
+  margin-top: 23px;
+
+  @media (max-width: 768px) {
+    width: 100%; 
+    padding: 15px;
+  }
 `;
 
 const RegisterBox = styled.div`
   background: rgba(255, 255, 255, 0.9);
-  padding: 40px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
   position: relative;
+  z-index: 2;
+
+  @media (max-width: 480px) {
+    max-width: 90%;
+    padding: 20px;
+  }
 `;
+
+
 
 const Title = styled.h2`
   text-align: center;
   margin-bottom: 20px;
   color: #333;
+  font-size: 1.5em;
+
+  @media (max-width: 480px) {
+    font-size: 1.3em;
+  }
 `;
 
 const InputWrapper = styled.div`
