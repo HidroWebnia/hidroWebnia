@@ -8,6 +8,7 @@ import AOS from 'aos';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
+
 AOS.init({
   duration: 1000, 
   once: true,     
