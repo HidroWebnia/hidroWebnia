@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import imgBG from '../assets/img-bg.svg';
 import { AuthContext } from './AuthContext';
+import { schedule } from '../services/api';
 
 const StyleAbout = styled.div`
   .banner {
@@ -187,7 +188,6 @@ const FormHeading = styled.h2`
   color: #1b5e20; 
   font-size: 1.2rem;
   margin-bottom: 20px;
-
 `;
 
 const Form = styled.form`
@@ -220,6 +220,42 @@ const Button = styled.button`
 
 const About = () => {
   const { isAuthenticated } = useContext(AuthContext);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    emailSchedule: '',
+    address: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage('');
+    setError('');
+
+    try {
+      const response = await schedule(formData);
+      if (response && response.status === 200) {
+        setMessage('Monitoramento agendado com sucesso!');
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <StyleAbout>
@@ -263,12 +299,44 @@ const About = () => {
 
         <FormContainer>
           <FormHeading>Agendar Monitoramento</FormHeading>
-          <Form>
-            <Input type="text" placeholder="Nome e Sobrenome" />
-            <Input type="text" placeholder="Telefone" />
-            <Input type="email" placeholder="Email" />
-            <Input type="text" placeholder="Endereço" />
-            <Button>Agendar Monitoramento</Button>
+          <Form onSubmit={handleSubmit}>
+            <Input 
+              type="text" 
+              name="name" 
+              value={formData.name} 
+              onChange={handleChange} 
+              placeholder="Nome e Sobrenome" 
+              required 
+            />
+            <Input 
+              type="text" 
+              name="phone" 
+              value={formData.phone} 
+              onChange={handleChange} 
+              placeholder="Telefone" 
+              required 
+            />
+            <Input 
+              type="email" 
+              name="emailSchedule" 
+              value={formData.emailSchedule} 
+              onChange={handleChange} 
+              placeholder="Email" 
+              required 
+            />
+            <Input 
+              type="text" 
+              name="address" 
+              value={formData.address} 
+              onChange={handleChange} 
+              placeholder="Endereço" 
+              required 
+            />
+            {message && <p>{message}</p>}
+            {error && <p>{error}</p>}
+            <Button type="submit" disabled={loading}>
+              {loading ? 'Carregando...' : 'Agendar Monitoramento'}
+            </Button>
           </Form>
         </FormContainer>
       </BannerContainer>
@@ -318,5 +386,3 @@ const About = () => {
 };
 
 export default About;
-
-
