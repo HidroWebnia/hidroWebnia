@@ -7,10 +7,10 @@ const userSchema = new Schema({
     password: {type: String, required: true},
     resetToken: {type: String},
     resetTime: {type: Date},
-    name: {type: String, required: true},
-    phone: {type: String, required: true},
-    emailSchedule: {type: String, required: true},
-    address: {type: String, required: true}
+    name: {type: String,},
+    phone: {type: String},
+    emailSchedule: {type: String},
+    address: {type: String}
 })
 
 module.exports = mongoose.model('User', userSchema)
