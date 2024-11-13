@@ -12,6 +12,7 @@ const StyleAbout = styled.div`
     background-position: center;
     padding: 96px;
     color: #fff;
+    margin-top: 38px;
 
     @media (max-width: 768px) {
       padding: 48px;
