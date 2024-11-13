@@ -16,20 +16,20 @@ const AdminStyle = styled.div`
 
 const StyledTabs = styled(Tabs)`
   .nav-link {
-    color: #ffffff; /* Cor do texto das abas */
-    background-color: #26503c; /* Cor de fundo das abas */
-    border-color: #ffffff; /* Cor da borda das abas */
+    color: #ffffff;
+    background-color: #26503c; 
+    border-color: #ffffff; 
   }
 
   .nav-link.active {
-    color: #ffffff; /* Cor do texto da aba ativa */
-    background-color: #1e3932; /* Cor de fundo da aba ativa */
-    border-color: #ffffff; /* Cor da borda da aba ativa */
+    color: #ffffff; 
+    background-color: #1e3932; 
+    border-color: #ffffff; 
   }
 
   .nav-link:hover {
-    color: #ffffff; /* Cor do texto quando o cursor está sobre a aba */
-    background-color: #1e3932; /* Cor de fundo quando o cursor está sobre a aba */
+    color: #ffffff; 
+    background-color: #1e3932; 
   }
 `;
 

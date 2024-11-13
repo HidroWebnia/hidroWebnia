@@ -150,7 +150,6 @@ const BannerContainer = styled.div`
   padding: 40px;
   background-color: #e8f5e9;
 
-  /* Ajuste para telas menores */
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 20px;
@@ -181,7 +180,6 @@ const TextSection = styled.div`
     color: #388e3c;
   }
 
-  /* Ajuste para telas menores */
   @media (max-width: 768px) {
     width: 100%;
     text-align: center;
@@ -204,7 +202,6 @@ const FormContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* Ajuste para telas menores */
   @media (max-width: 768px) {
     width: 100%;
     margin-top: 20px;
