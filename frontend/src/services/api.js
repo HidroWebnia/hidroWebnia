@@ -143,3 +143,20 @@ export const newPassword = (token, { password, confirmPassword }) => {
             }
         })
 }
+
+export const schedule = ({ name, phone, emailSchedule, address }) => {
+    return api.post('auth/schedule' , { name, phone, emailSchedule, address })
+    .then(response => {
+        if (response.status === 200) {
+            return response
+        }
+    })
+    .catch(err => {
+        console.error(err)
+        if (err.response && err.response.data) {
+            throw new Error(err.response.data.msg || 'Erro ao enviar email de agedamento!')
+        } else {
+            throw new Error('Erro no servidor, tente novamente mais tarde!')
+        }
+    })
+}

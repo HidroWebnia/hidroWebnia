@@ -6,7 +6,11 @@ const userSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     resetToken: {type: String},
-    resetTime: {type: Date}
+    resetTime: {type: Date},
+    name: {type: String, required: true},
+    phone: {type: String, required: true},
+    emailSchedule: {type: String, required: true},
+    address: {type: String, required: true}
 })
 
 module.exports = mongoose.model('User', userSchema)

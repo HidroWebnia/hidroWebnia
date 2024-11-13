@@ -78,7 +78,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
     }
 })
 
-router.put('/:id', authMiddleware, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         
         esp32Timer.start()

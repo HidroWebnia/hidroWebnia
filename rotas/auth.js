@@ -149,7 +149,7 @@ router.post('/reset-password', async (req, res) => {
         subject: 'Link para redefinir sua senha',
         text: `Você está recebendo este email porque solicitou a redefinição de senha para sua conta.\n\n
         Por favor, clique no link a seguir, ou cole-o em seu navegador para concluir o processo dentro de uma hora após o recebimento:\n\n
-        https://devicessite.onrender.com/reset-password/${token}\n\n
+        https://hidro-webnia.vercel.app/reset-password/${token}\n\n
         Se você não solicitou isso, por favor, ignore este email e sua senha permanecerá inalterada.\n`,
     }
 
@@ -158,7 +158,7 @@ router.post('/reset-password', async (req, res) => {
         const transporter = await createTransporter()
         transporter.sendMail(mailOptions, (err, response) => {
             if (err) {
-                console.error('Erro ao enviar email:', err);
+                console.error('Erro ao enviar email:', err)
                 return res.status(500).json({ msg: 'Erro no servidor, tente novamente mais tarde!' })
             }
             res.status(200).json({ msg: 'Email de redefinição de senha enviado com sucesso!' })
@@ -166,7 +166,7 @@ router.post('/reset-password', async (req, res) => {
 
     } catch (err) {
 
-        console.error('Erro ao criar o transportador:', err);
+        console.error('Erro ao criar o transportador:', err)
         res.status(500).json({ msg: 'Erro no servidor, tente novamente mais tarde!' })
 
     }
@@ -203,6 +203,41 @@ router.post('/reset-password/:token', async (req, res) => {
     await user.save()
 
     res.status(200).json({ msg: 'Senha redefinida com sucesso!' })
+
+})
+
+router.post('/schedule', async (req, res) => {
+
+    const { name, phone, emailSchedule, address } = req.body
+
+    const mailOptions = {
+        from: process.env.GMAIL_ACC,
+        to: process.env.GMAIL_ACC,
+        subject: 'Solicitação de Agendamento de Monitoramento',
+        text: `O usuário ${name} solicitou um agendamento de monitoramento.
+        \nInformações de Contato:
+        \nTelefone: ${phone}
+        \nEmail: ${emailSchedule}
+        \nEndereço: ${address}`,
+    }
+
+    try {
+
+        const transporter = await createTransporter()
+        transporter.sendMail(mailOptions, (err, response) => {
+            if (err) {
+                console.error('Erro ao enviar email:', err)
+                return res.status(500).json({ msg: 'Erro no servidor, tente novamente mais tarde!' })
+            }
+            res.status(200).json({ msg: 'Email de solicitação de agendamento enviado com sucesso!' })
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao criar o transportador:', err)
+        res.status(500).json({ msg: 'Erro no servidor, tente novamente mais tarde!' })
+
+    }
 
 })
 
