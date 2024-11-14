@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -70,17 +70,14 @@ const Footer = () => {
   return (
     <FooterContainer data-aos="fade-up">
       <SocialIcons>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebook />
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter />
+        <a href="https://wa.me/5588988155616?text=Ol%C3%A1,%20tudo%20bem%20?%20Gostaria%20de%20tirar%20umas%20d%C3%BAvidas%20sobre%20o%20HidroWebnia" target="_blank" rel="noopener noreferrer">
+          <FaWhatsapp />
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
           <FaInstagram />
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          <FaLinkedin />
+        <a href="mailto:hidrowebnia@gmail.com" target="_blank" rel="noopener noreferrer">
+          <FaEnvelope />
         </a>
       </SocialIcons>
 

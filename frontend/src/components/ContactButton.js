@@ -52,7 +52,7 @@ const Icon = styled.i`
 
 const ContactButton = () => (
   <ButtonContainer 
-    href="https://wa.me/5588988155616?text=Ol%C3%A1,%20seja%20bem%20vindo%20!!" 
+    href="https://wa.me/5588988155616?text=Ol%C3%A1,%20tudo%20bem%20?%20Gostaria%20de%20tirar%20umas%20d%C3%BAvidas%20sobre%20o%20HidroWebnia" 
     target="_blank"
   >
     <Icon className="fab fa-whatsapp" />
