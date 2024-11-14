@@ -91,14 +91,13 @@ const StyleAbout = styled.div`
     }
   }
 
-  .benefits-title {
+     .benefits-title {
     margin: 40px 0 20px;
     text-align: center;
     font-size: 28px;
     color: #000;
     font-weight: bold;
   }
-
   .benefits-subtitle {
     text-align: center;
     font-size: 18px;
@@ -106,7 +105,6 @@ const StyleAbout = styled.div`
     margin-bottom: 40px;
     font-weight: bold;
   }
-
   .categories {
     display: flex;
     flex-wrap: wrap;
@@ -114,7 +112,6 @@ const StyleAbout = styled.div`
     gap: 20px;
     margin-top: 18px;
   }
-
   .category {
     display: flex;
     flex-direction: column;
@@ -126,15 +123,12 @@ const StyleAbout = styled.div`
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 150px;
     transition: transform 0.3s ease;
-
     &:hover {
       transform: scale(1.05);
     }
-
     .icon {
-      font-size: 50px;
+      font-size: 50px; 
     }
-
     .title {
       margin-top: 10px;
       font-weight: bold;
@@ -142,7 +136,7 @@ const StyleAbout = styled.div`
     }
   }
 `;
-
+  
 const BannerContainer = styled.div`
   display: flex;
   align-items: center;
