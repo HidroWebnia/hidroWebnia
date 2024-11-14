@@ -7,7 +7,7 @@ const app = express()
 const api = require('./rotas/index')
 const http = require('http')
 const server = http.createServer(app)
-require('./socket')(server)
+require('./config/socket')(server)
 
 const dirname = path.resolve()
 

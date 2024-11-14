@@ -1,6 +1,6 @@
 const { Server } = require('socket.io')
-const mongoose = require('./mongoDB/mongo')
-const Devices = require('./model/Devices')
+const mongoose = require('../mongoDB/mongo')
+const Devices = require('../model/Devices')
 
 module.exports = (server) => {
   const io = new Server(server, {

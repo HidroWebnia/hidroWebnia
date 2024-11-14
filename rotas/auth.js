@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const User = require('../model/User')
 const router = express.Router()
-const createTransporter = require('../nodemail')
+const createTransporter = require('../config/nodemail')
 const { authMiddleware, blacklist } = require('../middlewares/authMiddleware')
 
 router.post('/register', async (req, res) => {
