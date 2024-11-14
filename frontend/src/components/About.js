@@ -360,6 +360,45 @@ const About = () => {
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </FormContainer>
       </BannerContainer>
+
+           <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
+<h3 className="benefits-subtitle">Maximizando a eficiência e produtividade da sua produção hidropônica.</h3>
+
+<div className="categories" data-aos="fade-up" data-aos-delay="200">
+  <div className="category">
+    <div className="icon">🌱</div>
+    <div className="title">Cultivo Sustentável</div>
+  </div>
+  <div className="category">
+    <div className="icon">💧</div>
+    <div className="title">Economia de Água</div>
+  </div>
+  <div className="category">
+    <div className="icon">📊</div>
+    <div className="title">Monitoramento em Tempo Real</div>
+  </div>
+  <div className="category">
+    <div className="icon">📈</div>
+    <div className="title">Otimização da Produção</div>
+  </div>
+  <div className="category">
+    <div className="icon">🔒</div>
+    <div className="title">Segurança de Dados</div>
+  </div>
+  <div className="category">
+    <div className="icon">🌍</div>
+    <div className="title">Sustentabilidade Ambiental</div>
+  </div>
+  <div className="category">
+    <div className="icon">🚀</div>
+    <div className="title">Acesso a Tecnologias Avançadas</div>
+  </div>
+  <div className="category">
+    <div className="icon">🛠️</div>
+    <div className="title">Melhoria da Qualidad
+e do Produto</div>
+  </div>
+</div>
     </StyleAbout>
   );
 };
