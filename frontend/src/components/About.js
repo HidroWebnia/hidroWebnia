@@ -91,7 +91,7 @@ const StyleAbout = styled.div`
     }
   }
 
-     .benefits-title {
+   .benefits-title {
     margin: 40px 0 20px;
     text-align: center;
     font-size: 28px;
@@ -105,45 +105,37 @@ const StyleAbout = styled.div`
     margin-bottom: 40px;
     font-weight: bold;
   }
-  
- .categories {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 20px;
-  margin-top: 18px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr); 
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 18px;
   }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr; 
+  .category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: scale(1.05);
+    }
+    .icon {
+      font-size: 50px; 
+    }
+    .title {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #000;
+    }
   }
-}
-
-.category {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.05);
-  }
-  .icon {
-    font-size: 50px; 
-  }
-  .title {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #000;
-  }
-}
-
+`;
   
 const BannerContainer = styled.div`
   display: flex;
@@ -363,44 +355,46 @@ const About = () => {
         </FormContainer>
       </BannerContainer>
 
-         <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
-<h3 className="benefits-subtitle">Maximizando a eficiência e produtividade da sua produção hidropônica.</h3>
+        <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
+      <h3 className="benefits-subtitle">Maximizando a eficiência e produtividade da sua produção hidropônica.</h3>
 
-<div className="categories" data-aos="fade-up" data-aos-delay="200">
-  <div className="category">
-    <div className="icon">🌱</div>
-    <div className="title">Cultivo Sustentável</div>
-  </div>
-  <div className="category">
-    <div className="icon">💧</div>
-    <div className="title">Economia de Água</div>
-  </div>
-  <div className="category">
-    <div className="icon">📊</div>
-    <div className="title">Monitoramento em Tempo Real</div>
-  </div>
-  <div className="category">
-    <div className="icon">📈</div>
-    <div className="title">Otimização da Produção</div>
-  </div>
-  <div className="category">
-    <div className="icon">🔒</div>
-    <div className="title">Segurança de Dados</div>
-  </div>
-  <div className="category">
-    <div className="icon">🌍</div>
-    <div className="title">Sustentabilidade Ambiental</div>
-  </div>
-  <div className="category">
-    <div className="icon">🚀</div>
-    <div className="title">Acesso a Tecnologias Avançadas</div>
-  </div>
-  <div className="category">
-    <div className="icon">🛠️</div>
-    <div className="title">Melhoria da Qualidad
-e do Produto</div>
-  </div>
-</div>
+      <div className="categories" data-aos="fade-up" data-aos-delay="200">
+        <div className="category">
+          <div className="icon">🌱</div>
+          <div className="title">Cultivo Sustentável</div>
+        </div>
+        <div className="category">
+          <div className="icon">💧</div>
+          <div className="title">Economia de Água</div>
+        </div>
+        <div className="category">
+          <div className="icon">📊</div>
+          <div className="title">Monitoramento em Tempo Real</div>
+        </div>
+        <div className="category">
+          <div className="icon">📈</div>
+          <div className="title">Otimização da Produção</div>
+        </div>
+      </div>
+
+      <div className="categories" data-aos="fade-up" data-aos-delay="200">
+        <div className="category">
+          <div className="icon">🔒</div>
+          <div className="title">Segurança de Dados</div>
+        </div>
+        <div className="category">
+          <div className="icon">🌍</div>
+          <div className="title">Sustentabilidade Ambiental</div>
+        </div>
+        <div className="category">
+          <div className="icon">🚀</div>
+          <div className="title">Acesso a Tecnologias Avançadas</div>
+        </div>
+        <div className="category">
+          <div className="icon">📈</div>
+          <div className="title">Melhoria da Qualidade do Produto</div>
+        </div>
+      </div>
     </StyleAbout>
   );
 };
