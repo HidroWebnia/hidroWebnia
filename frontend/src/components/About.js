@@ -105,18 +105,19 @@ const StyleAbout = styled.div`
     margin-bottom: 40px;
     font-weight: bold;
   }
+  
  .categories {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Define 4 colunas de igual largura */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
   margin-top: 18px;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr); /* Para telas menores que 1024px, 2 colunas */
+    grid-template-columns: repeat(2, 1fr); 
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; /* Para telas menores que 768px, 1 coluna */
+    grid-template-columns: 1fr; 
   }
 }
 
