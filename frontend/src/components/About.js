@@ -361,7 +361,7 @@ const About = () => {
         </FormContainer>
       </BannerContainer>
 
-           <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
+         <h2 className="benefits-title">Benefícios do HidroWebnia</h2>
 <h3 className="benefits-subtitle">Maximizando a eficiência e produtividade da sua produção hidropônica.</h3>
 
 <div className="categories" data-aos="fade-up" data-aos-delay="200">
