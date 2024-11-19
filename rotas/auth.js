@@ -27,6 +27,17 @@ router.post('/register', async (req, res) => {
         return res.status(422).json({ msg: 'As senhas não conferem!' })
     }
 
+    if (password.length < 8) {
+        return res.status(422).json({ msg: 'A senha deve ter pelo menos 8 caracteres!' })
+    }
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/
+    if (!passwordRegex.test(password)) {
+        return res.status(422).json({
+            msg: 'A senha deve conter pelo menos uma letra, um número e ter no mínimo 8 caracteres.',
+        })
+    }
+
     const userExists = await User.findOne({ username: username })
 
     if(userExists){
