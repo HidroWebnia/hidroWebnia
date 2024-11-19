@@ -15,6 +15,11 @@ import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 import AuthProvider from './components/AuthContext'; 
 import ContactButton from './components/ContactButton';
+import MainDash from './components/MainDash';
+import Chart from './components/Chart';
+
+
+
 
 function App() {
   return (
@@ -31,6 +36,11 @@ function App() {
           <Route path="/medidas" element={<PrivateRoute element={<Measurements />} />} />
           <Route path="/medidas/:id" element={<PrivateRoute element={<DetailsDevices />} />} />
           <Route path="/admin" element={<PrivateRoute element={<Admin />} />} />
+          <Route path="/dashboard" element={<MainDash />} />
+          <Route path="/chart" element={<Chart />} /> {/* Nova rota para o Chart */}
+
+
+
         </Routes>
         <ContactButton /> 
       </Router>

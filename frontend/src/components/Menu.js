@@ -26,6 +26,9 @@ const Menu = () => {
                 <Nav.Link as={Link} to="/admin">
                   Administração
                 </Nav.Link>
+                <Nav.Link as={Link} to="/chart">
+                  Dashboard
+                </Nav.Link>
               </>
             )}
             {!isAuthenticated ? (
