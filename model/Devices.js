@@ -16,7 +16,7 @@ const deviceSchema = new Schema({
         temperature: {type: Number},
         waterTemperature: {type: Number},
         waterFlux: {type: Boolean},
-        containerLevel: {type: Number},
+        containerLevel: {type: String},
         conductivity: {type: Number},
         humidity: {type: Number},
         luminosity: {type: Number},
