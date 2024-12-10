@@ -7,11 +7,12 @@ import joao from '../assets/joao.svg';
 import wesney from '../assets/wesney.svg';
 import renato from '../assets/renato.svg';
 import galindo from '../assets/galindo.png';
-
+import rodrigo from '../assets/rodrigo.svg';
 
 const StyleTime = styled.div`
   padding: 96px;
   margin-top: 40px;
+
   @media (max-width: 768px) {
     padding: 48px;
   }
@@ -27,14 +28,18 @@ const StyleTime = styled.div`
   }
 
   .members {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-top: 26px;
     justify-content: center;
-    margin-top: 36px;
-    flex-wrap: nowrap; 
-    gap: 20px;
 
-    @media (max-width: 992px) {
-      flex-wrap: wrap; 
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr; 
     }
   }
 
@@ -51,38 +56,26 @@ const StyleTime = styled.div`
     flex-direction: column;
     align-items: center;
     border: solid 2px #e0e0e0;
-    background-color: #f8f8f8; 
-    border-radius: 10px; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    width: 18%; 
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px; 
+    width: 90%;
     box-sizing: border-box;
-    margin-bottom: 20px;
 
     &:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-
-    @media (max-width: 992px) {
-      width: 30%;
-    }
-
-    @media (max-width: 768px) {
-      width: 45%;
-    }
-
-    @media (max-width: 480px) {
-      width: 80%;
-    }
   }
 
   .card img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 12px;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
     margin-top: 7px;
   }
 
@@ -110,7 +103,7 @@ const StyleTime = styled.div`
 
   .links {
     display: flex;
-    gap: 8px;
+    gap: 10px; 
     flex-direction: row;
     color: #3d684d;
   }
@@ -125,16 +118,14 @@ const StyleTime = styled.div`
   }
 `;
 
-
-
 const Time = () => {
   return (
     <div>
       <StyleTime>
         <h1>Equipe</h1>
-        <hr/>
-
+        <hr />
         <div className="members" data-aos="fade-up" data-aos-delay="200">
+          {/* Card 1 */}
           <div className="card">
             <img src={renato} alt="Renato William" />
             <p>Renato William</p>
@@ -147,7 +138,7 @@ const Time = () => {
               </div>
             </div>
           </div>
-
+          {/* Card 2 */}
           <div className="card">
             <img src={joao} alt="João Lucas" />
             <p>João Lucas</p>
@@ -160,7 +151,7 @@ const Time = () => {
               </div>
             </div>
           </div>
-
+          {/* Card 3 */}
           <div className="card">
             <img src={wesney} alt="Wesney de Paiva" />
             <p>Wesney Paiva</p>
@@ -173,7 +164,7 @@ const Time = () => {
               </div>
             </div>
           </div>
-
+          {/* Card 4 */}
           <div className="card">
             <img src={ivan} alt="Ivan Magalhães" />
             <p>Ivan Magalhães</p>
@@ -186,7 +177,20 @@ const Time = () => {
               </div>
             </div>
           </div>
-          
+          {/* Card 5 */}
+          <div className="card">
+            <img src={rodrigo} alt="Rodrigo Freitas" />
+            <p>Rodrigo Freitas</p>
+            <div className="card-time">
+              <p>Sistemas Embarcados</p>
+              <div className="links">
+                <a href="https://www.linkedin.com/in/rodrigo-souza-679864313?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                <a href="https://www.instagram.com/rodrigosouza2642/?igsh=aWE4YWY3NzJ4MjF5#" target="_blank" rel="noopener noreferrer"><RiInstagramFill /></a>
+                <a href="" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+              </div>
+            </div>
+          </div>
+          {/* Card 6 */}
           <div className="card">
             <img src={galindo} alt="Lucas Galindo" />
             <p>Lucas Galindo</p>
