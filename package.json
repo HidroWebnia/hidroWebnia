@@ -1,41 +1,54 @@
 {
-  "name": "devices",
-  "version": "1.0.0",
-  "description": "API de Devices",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "backend": "nodemon app.js",
-    "frontend": "npm start --prefix frontend",
-    "devices": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "render-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
-  },
-  "keywords": [],
-  "author": "João Lucas",
-  "license": "ISC",
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "@material-tailwind/react": "^2.1.10",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@userfront/toolkit": "^1.0.8",
     "aos": "^2.3.4",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.2",
-    "concurrently": "^8.2.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "googleapis": "^135.0.0",
-    "jsonwebtoken": "^9.0.2",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "http-proxy-middleware": "^3.0.0",
     "jwt-decode": "^4.0.0",
-    "mdb-react-ui-kit": "^9.0.0",
-    "mongoose": "^8.3.1",
-    "mqtt": "^5.10.1",
-    "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.13",
-    "slug": "^9.0.0",
-    "socket.io": "^4.7.5",
-    "styled-components": "^6.1.11"
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "^5.0.1",
+    "socket.io-client": "^4.7.5",
+    "styled-components": "^6.1.8",
+    "swr": "^2.2.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "nodemon": "^3.1.3"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
